@@ -1,0 +1,33 @@
+.profile {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.profile__details {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  align-self: stretch;
+  justify-content: space-evenly;
+}
+
+.profile__name {
+  font-size: 1.4rem;
+}
+
+.profile__status {
+  font-size: 1.2rem;
+}
+
+.profile__picture {
+  height: 3.5rem;
+  width: 3.5rem;
+  border-radius: 50%;
+}
+
+.profile__options-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: var(--color-white);
+}

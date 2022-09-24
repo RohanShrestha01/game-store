@@ -1,0 +1,58 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  gap: 13rem;
+  width: 100vw;
+  height: 5rem;
+  padding-right: 2.2rem;
+  background-color: var(--color-black-light);
+  z-index: 100;
+}
+
+.header__left,
+.header__middle,
+.header__right {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+/* To make the search field responsive to width of window */
+.header__middle {
+  flex-basis: 50rem;
+  justify-content: center;
+}
+
+.logo {
+  align-self: stretch;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.5rem;
+  background-color: var(--color-primary);
+}
+
+.logo__image {
+  height: 5rem;
+}
+
+.filter-btn__icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  fill: var(--color-white);
+}
+
+.notification-btn__icon,
+.friends-btn__icon {
+  width: 2.2rem;
+  height: 2.2rem;
+  fill: var(--color-primary);
+}
+
+.notification-btn__icon:hover,
+.friends-btn__icon:hover {
+  fill: var(--color-primary-dark);
+}
