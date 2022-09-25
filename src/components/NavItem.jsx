@@ -8,8 +8,8 @@ export const NavItem = props => {
     <li className={classes['nav__item']}>
       <NavLink
         to={`store/${props.title.toLowerCase()}`}
-        className={NavData =>
-          NavData.isActive ? activeClass : classes.nav__link
+        className={({ isActive }) =>
+          isActive ? activeClass : classes.nav__link
         }
       >
         {props.title}

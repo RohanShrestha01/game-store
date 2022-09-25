@@ -38,8 +38,8 @@ export const Sidebar = () => {
           <li className={classes['side-nav__item']} key={id}>
             <NavLink
               to={paths[id]}
-              className={NavData =>
-                NavData.isActive ? activeClass : classes['side-nav__link']
+              className={({ isActive }) =>
+                isActive ? activeClass : classes['side-nav__link']
               }
             >
               <SideNavSvg className={classes['side-nav__icon']} />

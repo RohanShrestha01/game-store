@@ -1,3 +1,5 @@
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -7,13 +9,16 @@ import {
 } from 'react-router-dom';
 
 import { RootLayout } from './pages/RootLayout';
+import { GameStore } from './pages/GameStore';
+
+const queryClient = new QueryClient();
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Navigate to="store" replace />} />
       <Route path="store" element={<Navigate to="games" replace />} />
-      <Route path="store/games" element={<h1>Games Store</h1>} />
+      <Route path="store/games" element={<GameStore />} />
       <Route path="store/movies" element={<h1>Movies Store</h1>} />
       <Route path="store/music" element={<h1>Music Store</h1>} />
       <Route path="store/apps" element={<h1>Apps Store</h1>} />
@@ -27,6 +32,13 @@ const router = createBrowserRouter(
   )
 );
 
-const App = () => <RouterProvider router={router} />;
+const App = () => {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />;
+      <ReactQueryDevtools initialIsOpen={true} />
+    </QueryClientProvider>
+  );
+};
 
 export default App;
