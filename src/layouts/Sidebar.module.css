@@ -8,38 +8,16 @@
   background-color: var(--color-black-light);
 }
 
-.side-nav {
-  display: flex;
-  flex-direction: column;
-}
-
 .side-nav__icon {
   width: 1.8rem;
   height: 1.8rem;
   fill: var(--color-white);
 }
 
-.side-nav__item {
-  text-align: center;
-  cursor: pointer;
-}
-
-.side-nav__item:hover .side-nav__icon {
-  fill: var(--color-primary);
-}
-
-.side-nav__link {
-  display: inline-block;
-  width: 100%;
-  padding: 1.8rem 0;
-  border: solid var(--color-black-light);
-  border-width: 0 2px;
-}
-
-.side-nav__link--active {
-  border-left-color: var(--color-primary);
+.side-nav__link:hover .side-nav__icon {
+  fill: var(--color-primary-main);
 }
 
 .side-nav__link--active .side-nav__icon {
-  fill: var(--color-primary);
+  fill: var(--color-primary-main);
 }

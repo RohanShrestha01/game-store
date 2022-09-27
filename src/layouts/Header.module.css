@@ -20,6 +20,10 @@
   gap: 2rem;
 }
 
+.header__right {
+  gap: 0.6rem;
+}
+
 /* To make the search field responsive to width of window */
 .header__middle {
   flex-basis: 50rem;
@@ -32,11 +36,21 @@
   align-items: center;
   justify-content: center;
   width: 5.5rem;
-  background-color: var(--color-primary);
+  background-color: var(--color-primary-main);
 }
 
 .logo__image {
   height: 5rem;
+}
+
+.filter-btn {
+  padding: 0.6rem 1rem;
+  background-color: var(--color-primary-main);
+  border-radius: 0.7rem;
+}
+
+.filter-btn:hover {
+  background-color: var(--color-primary-dark);
 }
 
 .filter-btn__icon {
@@ -49,10 +63,19 @@
 .friends-btn__icon {
   width: 2.2rem;
   height: 2.2rem;
-  fill: var(--color-primary);
+  fill: var(--color-primary-main);
 }
 
 .notification-btn__icon:hover,
-.friends-btn__icon:hover {
+.friends-btn:hover .friends-btn__icon {
   fill: var(--color-primary-dark);
+}
+
+.friends-btn {
+  gap: 0.7rem;
+}
+
+.friends-btn__number {
+  font-size: 1.3rem;
+  color: var(--color-white);
 }

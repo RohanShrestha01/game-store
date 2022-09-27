@@ -1,5 +1,7 @@
 import logo from '../assets/logo.png';
 
+import { Badge, IconButton } from '@mui/material';
+
 import classes from './Header.module.css';
 
 import { AdjustmentsSvg } from '../icons/AdjustmentsSvg';
@@ -9,7 +11,7 @@ import { UsersSvg } from '../icons/UsersSvg';
 import { Navbar } from '../components/Navbar';
 import { Search } from '../components/Search';
 import { Profile } from '../components/Profile';
-import { SvgButton } from '../components/SvgButton';
+import { StyledTooltip } from '../styles/StyledTooltip';
 
 export const Header = () => {
   return (
@@ -23,19 +25,38 @@ export const Header = () => {
 
       <section className={classes.header__middle}>
         <Search />
-        <SvgButton type="filter">
-          <AdjustmentsSvg className={classes['filter-btn__icon']} />
-        </SvgButton>
+        <StyledTooltip title="filter">
+          <IconButton className={classes['filter-btn']}>
+            <AdjustmentsSvg className={classes['filter-btn__icon']} />
+          </IconButton>
+        </StyledTooltip>
       </section>
 
       <section className={classes.header__right}>
         <Profile />
-        <SvgButton type="notification" number="5">
-          <BellSvg className={classes['notification-btn__icon']} />
-        </SvgButton>
-        <SvgButton type="friends" number="25">
-          <UsersSvg className={classes['friends-btn__icon']} />
-        </SvgButton>
+        <StyledTooltip title="notifications">
+          <IconButton className={classes['notification-btn']} color="primary">
+            <Badge
+              badgeContent={5}
+              overlap="circular"
+              sx={{
+                '& .MuiBadge-badge': {
+                  fontSize: '1rem',
+                  color: 'common.white',
+                  bgcolor: 'red',
+                },
+              }}
+            >
+              <BellSvg className={classes['notification-btn__icon']} />
+            </Badge>
+          </IconButton>
+        </StyledTooltip>
+        <StyledTooltip title="friends">
+          <IconButton className={classes['friends-btn']} color="primary">
+            <UsersSvg className={classes['friends-btn__icon']} />
+            <span className={classes['friends-btn__number']}>25</span>
+          </IconButton>
+        </StyledTooltip>
       </section>
     </header>
   );

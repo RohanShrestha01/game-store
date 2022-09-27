@@ -7,6 +7,8 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
+import { theme } from './styles/theme';
 
 import { RootLayout } from './pages/RootLayout';
 import { GameStore } from './pages/GameStore';
@@ -35,8 +37,12 @@ const router = createBrowserRouter(
 const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
-      <RouterProvider router={router} />;
-      <ReactQueryDevtools initialIsOpen={true} />
+      <ThemeProvider theme={theme}>
+        <StyledEngineProvider injectFirst>
+          <RouterProvider router={router} />;
+          <ReactQueryDevtools initialIsOpen={true} />
+        </StyledEngineProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   );
 };

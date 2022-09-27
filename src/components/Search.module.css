@@ -19,7 +19,7 @@
   border-radius: 0.3rem;
   padding: 0 4.5rem;
   border: 0;
-  background-color: var(--color-grey);
+  background-color: var(--color-grey-main);
   font-size: 1.4rem;
 }
 
@@ -34,9 +34,8 @@
 .search__reset-btn {
   background-color: transparent;
   position: absolute;
-  right: 1.2rem;
+  right: 0.4rem;
   border: 0;
-  /* visibility: hidden; */
 }
 
 .search__reset-icon {

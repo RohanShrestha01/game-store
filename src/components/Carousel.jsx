@@ -21,11 +21,16 @@ export const Carousel = props => {
 
   return (
     <section className={classes.carousel}>
-      <CarouselSlider active={active} featuredGames={props.featured} />
+      <CarouselSlider
+        active={active}
+        featuredGames={props.featured}
+        isLoading={props.isLoading}
+      />
       <CarouselProgress
         active={active}
         featuredGames={props.featured}
         carouselItemClickHandler={carouselItemClickHandler}
+        isLoading={props.isLoading}
       />
     </section>
   );
