@@ -1,10 +1,13 @@
-import Skeleton from '@mui/material/Skeleton';
 import classes from './CarouselProgress.module.css';
+import Skeleton from '@mui/material/Skeleton';
+import { useGamesData } from '../hooks/useGamesData';
 
-export const CarouselProgress = props => {
+export const CarouselProgress = ({ active, clickHandler, featured }) => {
+  const { gamesIsLoading } = useGamesData('featured');
+
   return (
     <div className={classes['carousel-progress']}>
-      {props.isLoading
+      {gamesIsLoading
         ? [...Array(6)].map((_, i) => (
             <figure
               key={i}
@@ -18,27 +21,25 @@ export const CarouselProgress = props => {
               <Skeleton variant="text" width={80} height={35} />
             </figure>
           ))
-        : props.featuredGames.map((gameObj, i) => (
+        : featured.map((game, i) => (
             <figure
-              key={gameObj.id}
-              onClick={props.carouselItemClickHandler.bind(null, i)}
+              key={game.id}
+              onClick={clickHandler.bind(null, i)}
               className={`${classes['carousel-progress__figure']} ${
-                i === props.active
-                  ? classes['carousel-progress__figure--active']
-                  : ''
+                i === active ? classes['carousel-progress__figure--active'] : ''
               }`}
             >
               <img
                 src={
-                  gameObj.bgImage.slice(0, 28) +
+                  game.bgImage.slice(0, 28) +
                   'crop/600/400/' +
-                  gameObj.bgImage.slice(28)
+                  game.bgImage.slice(28)
                 }
-                alt={gameObj.name + 'Game'}
+                alt={game.name + ' Game'}
                 className={classes['carousel-progress__image']}
               />
               <figcaption className={classes['carousel-progress__caption']}>
-                {gameObj.name}
+                {game.name}
               </figcaption>
             </figure>
           ))}

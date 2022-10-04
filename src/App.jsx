@@ -10,10 +10,19 @@ import {
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { theme } from './styles/theme';
 
-import { RootLayout } from './pages/RootLayout';
+import { RootLayout } from './layouts/RootLayout';
 import { GameStore } from './pages/GameStore';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: Infinity,
+      cacheTime: Infinity,
+      networkMode: 'always',
+      refetchOnReconnect: true,
+    },
+  },
+});
 
 const router = createBrowserRouter(
   createRoutesFromElements(

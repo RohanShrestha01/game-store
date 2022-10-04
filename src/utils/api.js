@@ -13,24 +13,24 @@ export const getGames = async url => {
     clips: game.clip?.clips,
     metacriticScore: game.metacritic,
     rating: game.rating,
-    ratings: game.ratings,
     released: game.released,
     platforms: game.parent_platforms,
-    playtime: game.playtime,
     screenshots: game.short_screenshots,
-    stores: game.stores,
-    updated: game.updated,
   }));
 
-  return gamesArr;
+  return { ...gamesData, results: gamesArr };
 };
 
 export const getPrices = async games => {
   const chars = {
     '-': '',
     ':': '',
-    "'": '5',
+    "'": '',
     '’': '',
+    '&': 'and',
+    '!': '',
+    '(': '',
+    ')': '',
     1: 'i',
     2: 'ii',
     3: 'iii',
@@ -41,21 +41,21 @@ export const getPrices = async games => {
     8: 'viii',
     9: 'ix',
   };
-  let plains = '';
-  games.forEach(game => {
-    plains =
-      plains +
+  const plains = games
+    .map(game =>
       game.name
-        .replace(/[-:'’123456789]/g, c => chars[c])
+        .replace(/[-:'’&!()123456789]/g, c => chars[c])
+        .toLowerCase()
+        .replace(/\bthe\b/g, '')
         .replaceAll(' ', '')
-        .toLowerCase() +
-      ',';
-  });
+    )
+    .join(',');
 
   const response = await fetch(
     `https://api.isthereanydeal.com/v01/game/prices/?key=${
       import.meta.env.VITE_ITAD_KEY
-    }&plains=` + plains.slice(0, -1)
+    }&plains=${plains}`
   );
-  return response.json();
+  const prices = await response.json();
+  return Object.values(prices.data);
 };

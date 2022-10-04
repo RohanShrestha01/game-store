@@ -1,0 +1,57 @@
+.game-card {
+  border-radius: 0.3rem;
+  background-color: var(--color-black-light);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.game__score {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  background-color: #202029;
+  border-radius: 50%;
+}
+
+.game__details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin: 1.2rem;
+}
+
+.game__title {
+  font-size: 1.6rem;
+  font-weight: 400;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.game__genre {
+  font-size: 1.2rem;
+  color: var(--color-grey-text);
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.game__section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.game__platforms {
+  display: flex;
+  gap: 0.8rem;
+  align-items: center;
+}
+
+.game__platforms svg {
+  height: 1.4rem;
+  width: 1.4rem;
+  fill: var(--color-white);
+}

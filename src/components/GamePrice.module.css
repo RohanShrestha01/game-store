@@ -1,0 +1,54 @@
+.carouselSlider {
+  margin-top: 2rem;
+  font-size: 1.8rem;
+}
+
+.game__price--old {
+  font-size: 1.2rem;
+  text-decoration: line-through;
+  color: var(--color-grey-text);
+  margin-left: 0.8rem;
+}
+
+.carouselSlider .game__price--old {
+  color: white;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+}
+
+.game__price--cut {
+  font-size: 1.2rem;
+  background-color: var(--color-primary-main);
+  border-radius: 0.3rem;
+  padding: 0.5rem 1rem;
+}
+
+.gameCard .game__price--cut {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.carouselSlider .game__price--cut {
+  margin-left: 2rem;
+  padding: 0.3rem 0.6rem;
+  font-size: 1.4rem;
+}
+
+.game__release {
+  font-size: 1.2rem;
+}
+
+.carouselSlider .action-btns {
+  margin-top: 2rem;
+  display: flex;
+  gap: 3rem;
+}
+
+.carouselSlider .action-btn {
+  font-size: 1.2rem;
+}
+
+.carouselSlider .cart-btn {
+  font-size: 1.2rem;
+}

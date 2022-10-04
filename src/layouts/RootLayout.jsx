@@ -2,8 +2,8 @@ import { Outlet } from 'react-router-dom';
 
 import classes from './RootLayout.module.css';
 
-import { Header } from '../layouts/Header';
-import { Sidebar } from '../layouts/Sidebar';
+import { Header } from './Header';
+import { Sidebar } from './Sidebar';
 
 export const RootLayout = () => {
   return (
