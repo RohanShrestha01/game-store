@@ -1,15 +1,17 @@
 import classes from './GameCard.module.css';
 
 import { GamePlatforms } from './GamePlatforms';
-import { CircularScoreProgress } from '../styles/CircularScoreProgress';
+import { CircularScoreProgress } from '../../styles/CircularScoreProgress';
 import { GamePrice } from './GamePrice';
-import { useGamesData } from '../hooks/useGamesData';
+import { useGamesData } from '../../hooks/useGamesData';
 import { Skeleton } from '@mui/material';
-import { Error } from '../pages/Error';
+import { ActionButtons } from './ActionButtons';
 
-export const GameCard = ({ category, id }) => {
-  const { games, gamesIsLoading, gamesError, pricesList, pricesIsLoading } =
-    useGamesData(category);
+export const GameCard = ({ category, id, page }) => {
+  const { games, gamesIsLoading, pricesList, pricesIsLoading } = useGamesData(
+    category,
+    page
+  );
 
   if (gamesIsLoading)
     return (
@@ -19,8 +21,6 @@ export const GameCard = ({ category, id }) => {
         height={250}
       />
     );
-
-  if (gamesError) return <Error error={gamesError} />;
 
   const game = games[id];
   const bgImageSrc =
@@ -54,13 +54,19 @@ export const GameCard = ({ category, id }) => {
             <GamePrice
               prices={pricesList[id].list[0]}
               releaseDate={game.released}
-              variant="gameCard"
+              variant="game-card__price"
             />
           )}
           <span className={classes.game__platforms}>
             <GamePlatforms platforms={game.platforms} />
           </span>
         </div>
+        {!pricesIsLoading && (
+          <ActionButtons
+            prices={pricesList[id].list[0]}
+            variant="game-card__btns"
+          />
+        )}
       </div>
     </div>
   );

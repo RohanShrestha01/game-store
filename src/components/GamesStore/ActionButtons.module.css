@@ -1,0 +1,21 @@
+.carousel-slider__btns {
+  margin-top: 2rem;
+  display: flex;
+  gap: 3rem;
+}
+
+.carousel-slider__btns .action-btn {
+  font-size: 1.2rem;
+}
+
+.carousel-slider__btns .cart-btn {
+  font-size: 1.2rem;
+}
+
+.game-card__btns {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+  display: none;
+}

@@ -1,6 +1,6 @@
 import classes from './CarouselProgress.module.css';
 import Skeleton from '@mui/material/Skeleton';
-import { useGamesData } from '../hooks/useGamesData';
+import { useGamesData } from '../../hooks/useGamesData';
 
 export const CarouselProgress = ({ active, clickHandler, featured }) => {
   const { gamesIsLoading } = useGamesData('featured');

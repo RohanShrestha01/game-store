@@ -3,6 +3,7 @@ import Zoom from '@mui/material/Zoom';
 
 export const theme = createTheme({
   palette: {
+    mode: 'dark',
     common: {
       black: {
         light: '#202029',

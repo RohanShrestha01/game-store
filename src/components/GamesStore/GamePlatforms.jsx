@@ -1,9 +1,9 @@
-import { WindowsSvg } from '../icons/WindowsSvg';
-import { AppleSvg } from '../icons/AppleSvg';
-import { LinuxSvg } from '../icons/LinuxSvg';
-import { PlaystationSvg } from '../icons/PlayStationSvg';
-import { XboxSvg } from '../icons/XboxSvg';
-import { NintendoSvg } from '../icons/NintendoSvg';
+import { WindowsSvg } from '../../icons/WindowsSvg';
+import { AppleSvg } from '../../icons/AppleSvg';
+import { LinuxSvg } from '../../icons/LinuxSvg';
+import { PlaystationSvg } from '../../icons/PlayStationSvg';
+import { XboxSvg } from '../../icons/XboxSvg';
+import { NintendoSvg } from '../../icons/NintendoSvg';
 
 export const GamePlatforms = ({ platforms }) =>
   platforms.map(({ platform: { slug } }, i) =>

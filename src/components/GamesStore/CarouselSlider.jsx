@@ -1,15 +1,26 @@
 import classes from './CarouselSlider.module.css';
 
 import { Button, IconButton, Rating, Skeleton } from '@mui/material';
-import { CircularScoreProgress } from '../styles/CircularScoreProgress';
+import { CircularScoreProgress } from '../../styles/CircularScoreProgress';
 import { GamePlatforms } from './GamePlatforms';
 import { GamePrice } from './GamePrice';
-import { useGamesData } from '../hooks/useGamesData';
+import { useGamesData } from '../../hooks/useGamesData';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import { ActionButtons } from './ActionButtons';
 
 export const CarouselSlider = ({ active, featured, prices }) => {
   const { gamesIsLoading, pricesIsLoading } = useGamesData('featured');
+
+  const bookmarkStyle = {
+    alignSelf: 'flex-start',
+    color: 'white',
+    fontSize: '1.2rem',
+    pl: '1rem',
+    '&:hover': {
+      backgroundColor: 'grey.main',
+    },
+  };
 
   return (
     <div className={classes['carousel-slider']}>
@@ -56,24 +67,22 @@ export const CarouselSlider = ({ active, featured, prices }) => {
               {pricesIsLoading ? (
                 <div>Loading...</div>
               ) : (
-                <GamePrice
-                  prices={prices[i].list[0]}
-                  releaseDate={game.released}
-                  variant="carouselSlider"
-                />
+                <>
+                  <GamePrice
+                    prices={prices[i].list[0]}
+                    releaseDate={game.released}
+                    variant="carousel-slider__price"
+                  />
+                  <ActionButtons
+                    prices={prices[i].list[0]}
+                    variant="carousel-slider__btns"
+                  />
+                </>
               )}
               <Button
                 variant="text"
                 startIcon={<AddCircleOutlineRoundedIcon />}
-                sx={{
-                  alignSelf: 'flex-start',
-                  color: 'white',
-                  fontSize: '1.2rem',
-                  pl: '1rem',
-                  '&:hover': {
-                    backgroundColor: 'grey.main',
-                  },
-                }}
+                sx={bookmarkStyle}
               >
                 Add to Bookmarks
               </Button>

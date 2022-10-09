@@ -12,6 +12,8 @@ import { theme } from './styles/theme';
 
 import { RootLayout } from './layouts/RootLayout';
 import { GameStore } from './pages/GameStore';
+import { PageNotFound } from './pages/PageNotFound';
+import { GamesCategory } from './pages/GamesCategory';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -30,6 +32,7 @@ const router = createBrowserRouter(
       <Route index element={<Navigate to="store" replace />} />
       <Route path="store" element={<Navigate to="games" replace />} />
       <Route path="store/games" element={<GameStore />} />
+      <Route path="store/games/:category" element={<GamesCategory />} />
       <Route path="store/movies" element={<h1>Movies Store</h1>} />
       <Route path="store/music" element={<h1>Music Store</h1>} />
       <Route path="store/apps" element={<h1>Apps Store</h1>} />
@@ -39,6 +42,7 @@ const router = createBrowserRouter(
       <Route path="music" element={<h1>Music</h1>} />
       <Route path="bookmarks" element={<h1>Bookmarks</h1>} />
       <Route path="settings" element={<h1>Settings</h1>} />
+      <Route path="*" element={<PageNotFound />} />
     </Route>
   )
 );
@@ -48,7 +52,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
-          <RouterProvider router={router} />;
+          <RouterProvider router={router} />
           <ReactQueryDevtools initialIsOpen={true} />
         </StyledEngineProvider>
       </ThemeProvider>

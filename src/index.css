@@ -37,6 +37,7 @@
 html {
   box-sizing: border-box;
   font-size: 62.5%; /* 1rem = 10px. 62.5% since (10/16)*100 */
+  user-select: none;
 }
 
 body {

@@ -1,5 +1,4 @@
 import classes from './GamePrice.module.css';
-import Button from '@mui/material/Button';
 
 export const GamePrice = ({ prices, variant, releaseDate }) => {
   const newPrice = prices?.price_new.toFixed(2);
@@ -12,8 +11,6 @@ export const GamePrice = ({ prices, variant, releaseDate }) => {
   today.setHours(0, 0, 0, 0); // To set hour to midnight
   const isReleased = new Date(releaseDate) < today;
 
-  const btnSize = variant === 'carouselSlider' ? 'large' : 'small';
-
   return (
     <section className={classes[variant]}>
       {isFree ? (
@@ -23,7 +20,7 @@ export const GamePrice = ({ prices, variant, releaseDate }) => {
           Available {releaseDate.replaceAll('-', '/')}
         </div>
       ) : (
-        <div className={classes.game__price}>
+        <>
           <span className={classes['game__price--new']}>
             {newPrice ? '$' + newPrice : 'N/A'}
           </span>
@@ -37,29 +34,7 @@ export const GamePrice = ({ prices, variant, releaseDate }) => {
               </span>
             </>
           )}
-        </div>
-      )}
-      {variant === 'carouselSlider' && (
-        <div className={classes['action-btns']}>
-          <Button
-            variant="contained"
-            href={prices?.url}
-            target="_blank"
-            className={classes['action-btn']}
-            size={btnSize}
-          >
-            {isFree ? 'Download' : newPrice ? 'Buy Now' : 'Notify Me'}
-          </Button>
-          {newPrice && (
-            <Button
-              variant="contained"
-              size={btnSize}
-              className={classes['cart-btn']}
-            >
-              Add to Cart
-            </Button>
-          )}
-        </div>
+        </>
       )}
     </section>
   );

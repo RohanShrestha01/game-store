@@ -3,8 +3,8 @@ import { useState, useEffect, useCallback } from 'react';
 import classes from './Carousel.module.css';
 import { CarouselSlider } from './CarouselSlider';
 import { CarouselProgress } from './CarouselProgress';
-import { useGamesData } from '../hooks/useGamesData';
-import { Error } from '../pages/Error';
+import { useGamesData } from '../../hooks/useGamesData';
+import { Error } from '../../pages/Error';
 
 let activeCarousel = 0;
 
