@@ -9,6 +9,7 @@ import { PageNotFound } from './PageNotFound';
 import { Error } from './Error';
 
 export const GamesCategory = () => {
+  window.scrollTo(0, 0);
   const [page, setPage] = useState(1);
 
   const category = useParams().category;

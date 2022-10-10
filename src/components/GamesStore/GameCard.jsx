@@ -58,7 +58,7 @@ export const GameCard = ({ category, id, page }) => {
             <div>Loading...</div>
           ) : (
             <GamePrice
-              prices={pricesList[id].list[0]}
+              prices={pricesList[id]?.list[0]}
               releaseDate={game.released}
               variant="game-card__price"
             />
@@ -70,7 +70,7 @@ export const GameCard = ({ category, id, page }) => {
       </div>
       {!pricesIsLoading && showBtns && (
         <ActionButtons
-          prices={pricesList[id].list[0]}
+          prices={pricesList[id]?.list[0]}
           variant="game-card__btns"
         />
       )}

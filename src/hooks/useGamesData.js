@@ -24,8 +24,6 @@ export const useGamesData = (category, page = 1) => {
 
   const games = data?.results;
   const gamesCount = data?.count;
-  const nextPage = data?.next;
-  const previousPage = data?.previous;
 
   const {
     data: pricesList,
@@ -43,7 +41,5 @@ export const useGamesData = (category, page = 1) => {
     pricesIsLoading,
     pricesError,
     gamesCount,
-    nextPage,
-    previousPage,
   };
 };

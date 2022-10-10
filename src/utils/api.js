@@ -34,6 +34,8 @@ export const getPrices = async games => {
     '.': '',
     ',': '',
     '#': '',
+    '/': '',
+    '~': '',
     1: 'i',
     2: 'ii',
     3: 'iii',
@@ -47,7 +49,7 @@ export const getPrices = async games => {
   const plains = games
     .map(game =>
       game.name
-        .replace(/[-:'’&!().,#123456789]/g, c => chars[c])
+        .replace(/[-:'’&!().,#/~123456789]/g, c => chars[c])
         .toLowerCase()
         .replace(/\bthe\b/g, '')
         .replaceAll(' ', '')
