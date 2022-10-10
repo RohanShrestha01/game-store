@@ -6,8 +6,10 @@ import { GamePrice } from './GamePrice';
 import { useGamesData } from '../../hooks/useGamesData';
 import { Skeleton } from '@mui/material';
 import { ActionButtons } from './ActionButtons';
+import { useState } from 'react';
 
 export const GameCard = ({ category, id, page }) => {
+  const [showBtns, setShowBtns] = useState(false);
   const { games, gamesIsLoading, pricesList, pricesIsLoading } = useGamesData(
     category,
     page
@@ -29,7 +31,11 @@ export const GameCard = ({ category, id, page }) => {
   const genres = game.genres.map(genre => genre.name).join(', ');
 
   return (
-    <div className={classes['game-card']}>
+    <div
+      className={classes['game-card']}
+      onMouseEnter={() => setShowBtns(true)}
+      onMouseLeave={() => setShowBtns(false)}
+    >
       {game.metacriticScore && (
         <div className={classes.game__score}>
           <CircularScoreProgress value={game.metacriticScore} />
@@ -61,13 +67,13 @@ export const GameCard = ({ category, id, page }) => {
             <GamePlatforms platforms={game.platforms} />
           </span>
         </div>
-        {!pricesIsLoading && (
-          <ActionButtons
-            prices={pricesList[id].list[0]}
-            variant="game-card__btns"
-          />
-        )}
       </div>
+      {!pricesIsLoading && showBtns && (
+        <ActionButtons
+          prices={pricesList[id].list[0]}
+          variant="game-card__btns"
+        />
+      )}
     </div>
   );
 };

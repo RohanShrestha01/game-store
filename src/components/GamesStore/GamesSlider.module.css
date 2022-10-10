@@ -23,3 +23,8 @@
   font-weight: 500;
   cursor: pointer;
 }
+
+.game-cards {
+  overflow-y: visible !important;
+  overflow-x: clip !important;
+}

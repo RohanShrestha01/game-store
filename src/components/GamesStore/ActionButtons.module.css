@@ -16,6 +16,12 @@
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
-  margin-top: 0.8rem;
-  display: none;
+  padding: 1.2rem;
+  padding-top: 0;
+  position: absolute;
+  top: 100%;
+  background-color: var(--color-black-light);
+  z-index: 10;
+  border-radius: 0 0 0.3rem 0.3rem;
+  width: 100%;
 }
