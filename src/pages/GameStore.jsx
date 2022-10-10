@@ -17,7 +17,7 @@ export const GameStore = () => {
   useEffect(() => {
     const obsOptions = {
       root: null,
-      rootMargin: '20px',
+      rootMargin: '200px',
       threshold: 0,
     };
 

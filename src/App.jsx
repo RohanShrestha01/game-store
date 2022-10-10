@@ -14,6 +14,7 @@ import { RootLayout } from './layouts/RootLayout';
 import { GameStore } from './pages/GameStore';
 import { PageNotFound } from './pages/PageNotFound';
 import { GamesCategory } from './pages/GamesCategory';
+import { GamesSearch } from './pages/GamesSearch';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -33,6 +34,7 @@ const router = createBrowserRouter(
       <Route path="store" element={<Navigate to="games" replace />} />
       <Route path="store/games" element={<GameStore />} />
       <Route path="store/games/:category" element={<GamesCategory />} />
+      <Route path="store/games/search" element={<GamesSearch />} />
       <Route path="store/movies" element={<h1>Movies Store</h1>} />
       <Route path="store/music" element={<h1>Music Store</h1>} />
       <Route path="store/apps" element={<h1>Apps Store</h1>} />

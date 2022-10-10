@@ -8,6 +8,16 @@ import { sliderData } from './GameStore';
 import { PageNotFound } from './PageNotFound';
 import { Error } from './Error';
 
+export const paginationStyle = {
+  display: 'flex',
+  justifyContent: 'center',
+  marginTop: '5rem',
+  '& .MuiPaginationItem-text': {
+    color: 'common.white',
+    fontSize: '1.4rem',
+  },
+};
+
 export const GamesCategory = () => {
   window.scrollTo(0, 0);
   const [page, setPage] = useState(1);
@@ -27,16 +37,6 @@ export const GamesCategory = () => {
 
   const { gamesError, gamesCount } = useGamesData(category, page);
   const pageCount = Math.ceil(gamesCount / 40);
-
-  const paginationStyle = {
-    display: 'flex',
-    justifyContent: 'center',
-    marginTop: '5rem',
-    '& .MuiPaginationItem-text': {
-      color: 'common.white',
-      fontSize: '1.4rem',
-    },
-  };
 
   if (!categoryMatch) return <PageNotFound />;
 

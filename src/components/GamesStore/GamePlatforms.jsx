@@ -6,7 +6,7 @@ import { XboxSvg } from '../../icons/XboxSvg';
 import { NintendoSvg } from '../../icons/NintendoSvg';
 
 export const GamePlatforms = ({ platforms }) =>
-  platforms.map(({ platform: { slug } }, i) =>
+  platforms?.map(({ platform: { slug } }, i) =>
     slug === 'pc' ? (
       <WindowsSvg key={i} />
     ) : slug === 'playstation' ? (

@@ -1,18 +1,18 @@
 import classes from './GameCard.module.css';
 
 import { GamePlatforms } from './GamePlatforms';
-import { CircularScoreProgress } from '../../styles/CircularScoreProgress';
 import { GamePrice } from './GamePrice';
 import { useGamesData } from '../../hooks/useGamesData';
 import { Skeleton } from '@mui/material';
 import { ActionButtons } from './ActionButtons';
 import { useState } from 'react';
 
-export const GameCard = ({ category, id, page }) => {
+export const GameCard = ({ category, id, page, searchQuery = null }) => {
   const [showBtns, setShowBtns] = useState(false);
   const { games, gamesIsLoading, pricesList, pricesIsLoading } = useGamesData(
     category,
-    page
+    page,
+    searchQuery
   );
 
   if (gamesIsLoading)
@@ -36,11 +36,6 @@ export const GameCard = ({ category, id, page }) => {
       onMouseEnter={() => setShowBtns(true)}
       onMouseLeave={() => setShowBtns(false)}
     >
-      {game.metacriticScore && (
-        <div className={classes.game__score}>
-          <CircularScoreProgress value={game.metacriticScore} />
-        </div>
-      )}
       <img
         src={bgImageSrc}
         alt={game.name + ' Game'}
