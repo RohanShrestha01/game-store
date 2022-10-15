@@ -12,12 +12,15 @@ import { Navbar } from '../components/Navbar';
 import { Search } from '../components/Search';
 import { Profile } from '../components/Profile';
 import { StyledTooltip } from '../styles/StyledTooltip';
+import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
+  const navigate = useNavigate();
+
   return (
     <header className={classes.header}>
       <section className={classes.header__left}>
-        <div className={classes.logo}>
+        <div className={classes.logo} onClick={() => navigate('/store/games')}>
           <img src={logo} alt="logo" className={classes.logo__image} />
         </div>
         <Navbar />

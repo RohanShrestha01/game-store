@@ -2,6 +2,9 @@ import { Carousel } from '../components/GamesStore/Carousel';
 import { GamesSlider } from '../components/GamesStore/GamesSlider';
 import { GamesList } from '../components/GamesStore/GamesList';
 import { useState, useRef, useEffect } from 'react';
+import { useGamesData } from '../hooks/useGamesData';
+import { Error } from './Error';
+import { GameOverlay } from '../components/GamesStore/Overlays/GameOverlay';
 
 export const sliderData = [
   ['Popular Games', 'popular'],
@@ -13,6 +16,7 @@ export const sliderData = [
 export const GameStore = () => {
   const [page, setPage] = useState(1);
   const loader = useRef(null);
+  const { gamesError } = useGamesData('all');
 
   useEffect(() => {
     const obsOptions = {
@@ -28,8 +32,11 @@ export const GameStore = () => {
     if (loader.current) observer.observe(loader.current);
   }, []);
 
+  if (gamesError) return <Error error={gamesError} />;
+
   return (
     <>
+      <GameOverlay />
       <Carousel />
       {sliderData.map(([heading, category], i) => (
         <GamesSlider heading={heading} category={category} key={i} />

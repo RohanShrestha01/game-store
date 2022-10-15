@@ -1,0 +1,84 @@
+.game-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  z-index: 20;
+  background-color: transparent;
+  display: flex;
+  gap: 4rem;
+  height: min-content;
+  width: clamp(70%, 120rem, 90%);
+}
+
+.game-modal--enter {
+  opacity: 0;
+  transform: scale(0);
+}
+
+.game-modal--enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 0.2s;
+}
+
+.game-modal--exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.game-modal--exit-active {
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.2s;
+}
+
+.game-modal__video {
+  width: 75%;
+  height: auto;
+  border-radius: 0.3rem;
+}
+
+.game-modal__deals {
+  flex-grow: 1;
+  padding: 2rem 1.5rem;
+  background-color: var(--color-black-dark);
+  border-radius: 0.3rem;
+}
+
+.deals__header {
+  font-size: 2rem;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+}
+
+.deals__empty-text {
+  text-align: center;
+}
+
+.deals__list {
+  border-radius: 0.3rem;
+  height: 25vw;
+  overflow: auto;
+}
+
+.deals__item {
+  background-color: var(--color-black-light);
+  margin-bottom: 2rem;
+}
+
+.deals__link {
+  color: var(--color-white);
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5rem 1.2rem;
+  font-size: 1.4rem;
+}
+
+.deals__link:hover {
+  color: var(--color-primary-main);
+}

@@ -21,7 +21,7 @@
   position: absolute;
   top: 100%;
   background-color: var(--color-black-light);
-  z-index: 10;
+  z-index: 5;
   border-radius: 0 0 0.3rem 0.3rem;
   width: 100%;
 }

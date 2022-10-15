@@ -24,7 +24,10 @@ export const useGamesData = (category, page = 1, searchQuery = null) => {
     error: gamesError,
   } = useQuery(['games', category, page], () => getGames(url));
 
-  const games = data?.results;
+  let games = data?.results;
+  /* To Remove Duplicate Games Data Sent from the Server */
+  if (games) games = [...new Map(games.map(game => [game.id, game])).values()];
+
   const gamesCount = data?.count;
 
   const {

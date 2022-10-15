@@ -4,10 +4,12 @@ import { GameCard } from './GameCard';
 import { useGamesData } from '../../hooks/useGamesData';
 
 export const GamesList = ({ category, heading, page, searchQuery = null }) => {
-  const { games } = useGamesData(category, page, searchQuery);
+  const { games, gamesError } = useGamesData(category, page, searchQuery);
   const resultsCount = games?.length ?? 40;
 
   const showHeading = category !== 'all' || (category === 'all' && page < 2);
+
+  if (gamesError) return;
 
   if (resultsCount === 0)
     return (

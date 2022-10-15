@@ -20,7 +20,6 @@ const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
       staleTime: Infinity,
-      cacheTime: Infinity,
       networkMode: 'always',
       refetchOnReconnect: true,
     },
@@ -32,9 +31,11 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Navigate to="store" replace />} />
       <Route path="store" element={<Navigate to="games" replace />} />
-      <Route path="store/games" element={<GameStore />} />
-      <Route path="store/games/:category" element={<GamesCategory />} />
-      <Route path="store/games/search" element={<GamesSearch />} />
+      <Route path="store/games">
+        <Route index element={<GameStore />} />
+        <Route path=":category" element={<GamesCategory />} />
+        <Route path="search" element={<GamesSearch />} />
+      </Route>
       <Route path="store/movies" element={<h1>Movies Store</h1>} />
       <Route path="store/music" element={<h1>Music Store</h1>} />
       <Route path="store/apps" element={<h1>Apps Store</h1>} />

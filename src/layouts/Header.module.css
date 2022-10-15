@@ -9,7 +9,7 @@
   height: 5rem;
   padding-right: 2.2rem;
   background-color: var(--color-black-light);
-  z-index: 100;
+  z-index: 10;
 }
 
 .header__left,
@@ -37,6 +37,7 @@
   justify-content: center;
   width: 5.5rem;
   background-color: var(--color-primary-main);
+  cursor: pointer;
 }
 
 .logo__image {

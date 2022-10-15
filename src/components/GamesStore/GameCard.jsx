@@ -5,15 +5,15 @@ import { GamePrice } from './GamePrice';
 import { useGamesData } from '../../hooks/useGamesData';
 import { Skeleton } from '@mui/material';
 import { ActionButtons } from './ActionButtons';
+import { gameModalActions } from '../../store/gameModalSlice';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 
 export const GameCard = ({ category, id, page, searchQuery = null }) => {
   const [showBtns, setShowBtns] = useState(false);
-  const { games, gamesIsLoading, pricesList, pricesIsLoading } = useGamesData(
-    category,
-    page,
-    searchQuery
-  );
+  const { games, gamesIsLoading, gamesError, pricesList, pricesIsLoading } =
+    useGamesData(category, page, searchQuery);
+  const dispatch = useDispatch();
 
   if (gamesIsLoading)
     return (
@@ -23,6 +23,8 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
         height={250}
       />
     );
+
+  if (gamesError) return;
 
   const game = games[id];
   const bgImageSrc =
@@ -35,6 +37,15 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
       className={classes['game-card']}
       onMouseEnter={() => setShowBtns(true)}
       onMouseLeave={() => setShowBtns(false)}
+      onClick={() =>
+        !pricesIsLoading &&
+        dispatch(
+          gameModalActions.showModal({
+            game,
+            pricesList: pricesList[id]?.list,
+          })
+        )
+      }
     >
       <img
         src={bgImageSrc}

@@ -1,16 +1,18 @@
 import classes from './CarouselSlider.module.css';
 
-import { Button, IconButton, Rating, Skeleton } from '@mui/material';
+import { Button, Rating, Skeleton } from '@mui/material';
 import { CircularScoreProgress } from '../../styles/CircularScoreProgress';
 import { GamePlatforms } from './GamePlatforms';
 import { GamePrice } from './GamePrice';
 import { useGamesData } from '../../hooks/useGamesData';
-import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
-import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
 import { ActionButtons } from './ActionButtons';
+import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
+import { useDispatch } from 'react-redux';
+import { gameModalActions } from '../../store/gameModalSlice';
 
 export const CarouselSlider = ({ active, featured, prices }) => {
   const { gamesIsLoading, pricesIsLoading } = useGamesData('featured');
+  const dispatch = useDispatch();
 
   const bookmarkStyle = {
     alignSelf: 'flex-start',
@@ -33,6 +35,15 @@ export const CarouselSlider = ({ active, featured, prices }) => {
             className={`${classes['carousel-slider__figure']} ${
               i === active ? classes['carousel-slider__figure--active'] : ''
             }`}
+            onClick={() => {
+              !pricesIsLoading &&
+                dispatch(
+                  gameModalActions.showModal({
+                    game,
+                    pricesList: prices[i].list,
+                  })
+                );
+            }}
           >
             {game.metacriticScore && (
               <div className={classes['carousel-slider__score']}>
@@ -89,12 +100,7 @@ export const CarouselSlider = ({ active, featured, prices }) => {
             </figcaption>
             <div className={classes['screenshots']}>
               <span className={classes['scenes-text']}>Scenes</span>
-              <div className={classes['clip-btn']}>
-                {/* <div>Watch Trailer</div>
-                <IconButton color="primary">
-                  <PlayArrowRoundedIcon sx={{ fontSize: '7rem' }} />
-                </IconButton> */}
-              </div>
+              <div className={classes['clip-btn']}></div>
               {game.screenshots.slice(1, 6).map(screenshot => (
                 <img
                   src={
