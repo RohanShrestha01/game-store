@@ -1,6 +1,6 @@
 import classes from './GamePrice.module.css';
 
-export const GamePrice = ({ prices, variant, releaseDate }) => {
+export const GamePrice = ({ prices, variant, releaseDate = '2000/01/01' }) => {
   const newPrice = prices?.price_new.toFixed(2);
   const oldPrice = prices?.price_old.toFixed(2);
   let priceCut = prices?.price_cut;

@@ -1,28 +1,18 @@
 import classes from './CarouselSlider.module.css';
 
-import { Button, Rating, Skeleton } from '@mui/material';
+import { Rating, Skeleton } from '@mui/material';
 import { CircularScoreProgress } from '../../styles/CircularScoreProgress';
 import { GamePlatforms } from './GamePlatforms';
 import { GamePrice } from './GamePrice';
 import { useGamesData } from '../../hooks/useGamesData';
 import { ActionButtons } from './ActionButtons';
-import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import { useDispatch } from 'react-redux';
 import { gameModalActions } from '../../store/gameModalSlice';
+import { BookmarksButton } from './BookmarksButton';
 
 export const CarouselSlider = ({ active, featured, prices }) => {
   const { gamesIsLoading, pricesIsLoading } = useGamesData('featured');
   const dispatch = useDispatch();
-
-  const bookmarkStyle = {
-    alignSelf: 'flex-start',
-    color: 'white',
-    fontSize: '1.2rem',
-    pl: '1rem',
-    '&:hover': {
-      backgroundColor: 'grey.main',
-    },
-  };
 
   return (
     <div className={classes['carousel-slider']}>
@@ -85,18 +75,13 @@ export const CarouselSlider = ({ active, featured, prices }) => {
                     variant="carousel-slider__price"
                   />
                   <ActionButtons
+                    game={game}
                     prices={prices[i].list[0]}
                     variant="carousel-slider__btns"
                   />
+                  <BookmarksButton game={game} prices={prices[i].list[0]} />
                 </>
               )}
-              <Button
-                variant="text"
-                startIcon={<AddCircleOutlineRoundedIcon />}
-                sx={bookmarkStyle}
-              >
-                Add to Bookmarks
-              </Button>
             </figcaption>
             <div className={classes['screenshots']}>
               <span className={classes['scenes-text']}>Scenes</span>

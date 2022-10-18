@@ -11,10 +11,12 @@ import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
 import { theme } from './styles/theme';
 
 import { RootLayout } from './layouts/RootLayout';
-import { GameStore } from './pages/GameStore';
+import { GamesStore } from './pages/GamesStore';
 import { PageNotFound } from './pages/PageNotFound';
 import { GamesCategory } from './pages/GamesCategory';
 import { GamesSearch } from './pages/GamesSearch';
+import { GamesStoreLayout } from './layouts/GamesStoreLayout';
+import { Bookmarks } from './pages/Bookmarks';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -31,8 +33,8 @@ const router = createBrowserRouter(
     <Route path="/" element={<RootLayout />}>
       <Route index element={<Navigate to="store" replace />} />
       <Route path="store" element={<Navigate to="games" replace />} />
-      <Route path="store/games">
-        <Route index element={<GameStore />} />
+      <Route path="store/games" element={<GamesStoreLayout />}>
+        <Route index element={<GamesStore />} />
         <Route path=":category" element={<GamesCategory />} />
         <Route path="search" element={<GamesSearch />} />
       </Route>
@@ -43,7 +45,7 @@ const router = createBrowserRouter(
       <Route path="games" element={<h1>Games</h1>} />
       <Route path="movies" element={<h1>Movies</h1>} />
       <Route path="music" element={<h1>Music</h1>} />
-      <Route path="bookmarks" element={<h1>Bookmarks</h1>} />
+      <Route path="bookmarks" element={<Bookmarks />} />
       <Route path="settings" element={<h1>Settings</h1>} />
       <Route path="*" element={<PageNotFound />} />
     </Route>

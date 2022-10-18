@@ -45,7 +45,9 @@ const GameModal = () => {
           )}
         </video>
         <div className={classes['game-modal__deals']}>
-          <h2 className={classes['deals__header']}>All Deals</h2>
+          <h2 className={classes['deals__header']}>
+            All Deals ({pricesList.length})
+          </h2>
           {pricesList.length === 0 ? (
             <p className={classes['deals__empty-text']}>
               Sorry, no deals are available.

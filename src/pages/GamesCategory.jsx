@@ -4,7 +4,7 @@ import { useGamesData } from '../hooks/useGamesData';
 
 import Pagination from '@mui/material/Pagination';
 import { GamesList } from '../components/GamesStore/GamesList';
-import { sliderData } from './GameStore';
+import { sliderData } from './GamesStore';
 import { PageNotFound } from './PageNotFound';
 import { Error } from './Error';
 

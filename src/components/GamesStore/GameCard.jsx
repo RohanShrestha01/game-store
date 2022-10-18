@@ -8,6 +8,7 @@ import { ActionButtons } from './ActionButtons';
 import { gameModalActions } from '../../store/gameModalSlice';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { BookmarksButton } from './BookmarksButton';
 
 export const GameCard = ({ category, id, page, searchQuery = null }) => {
   const [showBtns, setShowBtns] = useState(false);
@@ -75,10 +76,18 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
         </div>
       </div>
       {!pricesIsLoading && showBtns && (
-        <ActionButtons
-          prices={pricesList[id]?.list[0]}
-          variant="game-card__btns"
-        />
+        <>
+          <ActionButtons
+            game={game}
+            prices={pricesList[id]?.list[0]}
+            variant="game-card__btns"
+          />
+          <BookmarksButton
+            variant="icon"
+            game={game}
+            prices={pricesList[id].list[0]}
+          />
+        </>
       )}
     </div>
   );

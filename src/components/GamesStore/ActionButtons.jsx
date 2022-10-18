@@ -1,4 +1,6 @@
 import classes from './ActionButtons.module.css';
+import { cartSliceActions } from '../../store/cartSlice';
+import { toastSliceActions } from '../../store/toastSlice';
 
 import Button from '@mui/material/Button';
 import {
@@ -6,11 +8,33 @@ import {
   AddShoppingCartRounded,
   ShoppingCartOutlined,
   NotificationAddOutlined,
+  RemoveShoppingCartOutlined,
 } from '@mui/icons-material';
 
-export const ActionButtons = ({ prices, variant }) => {
+import { useDispatch, useSelector } from 'react-redux';
+
+export const ActionButtons = ({ game, prices, variant }) => {
   const newPrice = prices?.price_new.toFixed(2);
   const isFree = +newPrice === 0 ? true : false;
+
+  const dispatch = useDispatch();
+  const cartItems = useSelector(state => state.cart.cartItems);
+  const presentInCart = cartItems.find(item => item.id === game.id);
+
+  const cartBtnClickHandler = e => {
+    e.stopPropagation();
+    if (presentInCart) {
+      dispatch(cartSliceActions.remove(game.id));
+      dispatch(toastSliceActions.addInfoToast('Item Removed from the Cart!'));
+    } else {
+      dispatch(cartSliceActions.add({ game: game, pricesList: prices }));
+      dispatch(toastSliceActions.addSuccessToast('Item Added to the Cart.'));
+    }
+  };
+
+  const Icon = presentInCart
+    ? RemoveShoppingCartOutlined
+    : AddShoppingCartRounded;
 
   return (
     <div className={classes[variant]}>
@@ -40,12 +64,11 @@ export const ActionButtons = ({ prices, variant }) => {
           variant="contained"
           size={variant === 'carousel-slider__btns' ? 'large' : 'medium'}
           className={classes['cart-btn']}
-          onClick={e => {
-            e.stopPropagation();
-          }}
-          startIcon={<AddShoppingCartRounded />}
+          onClick={cartBtnClickHandler}
+          color={presentInCart ? 'error' : 'primary'}
+          startIcon={<Icon />}
         >
-          Add to Cart
+          {presentInCart ? 'Remove From Cart' : 'Add to Cart'}
         </Button>
       )}
     </div>
