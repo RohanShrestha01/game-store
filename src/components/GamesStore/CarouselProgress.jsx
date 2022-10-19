@@ -1,5 +1,6 @@
-import classes from './CarouselProgress.module.css';
 import Skeleton from '@mui/material/Skeleton';
+
+import classes from './CarouselProgress.module.css';
 import { useGamesData } from '../../hooks/useGamesData';
 
 export const CarouselProgress = ({ active, clickHandler, featured }) => {
@@ -30,11 +31,15 @@ export const CarouselProgress = ({ active, clickHandler, featured }) => {
               }`}
             >
               <img
-                src={
+                srcSet={`${
                   game.bgImage.slice(0, 28) +
-                  'crop/600/400/' +
+                  'resize/200/-/' +
                   game.bgImage.slice(28)
-                }
+                } 1x, ${
+                  game.bgImage.slice(0, 28) +
+                  'resize/420/-/' +
+                  game.bgImage.slice(28)
+                } 2x`}
                 alt={game.name + ' Game'}
                 className={classes['carousel-progress__image']}
               />

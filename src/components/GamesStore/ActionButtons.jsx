@@ -1,7 +1,4 @@
-import classes from './ActionButtons.module.css';
-import { cartSliceActions } from '../../store/cartSlice';
-import { toastSliceActions } from '../../store/toastSlice';
-
+import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
 import {
   FileDownloadOutlined,
@@ -11,7 +8,9 @@ import {
   RemoveShoppingCartOutlined,
 } from '@mui/icons-material';
 
-import { useDispatch, useSelector } from 'react-redux';
+import classes from './ActionButtons.module.css';
+import { cartSliceActions } from '../../store/cartSlice';
+import { toastSliceActions } from '../../store/toastSlice';
 
 export const ActionButtons = ({ game, prices, variant }) => {
   const newPrice = prices?.price_new.toFixed(2);

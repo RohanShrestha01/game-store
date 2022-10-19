@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { useGamesData } from '../hooks/useGamesData';
-
 import Pagination from '@mui/material/Pagination';
+
+import { useGamesData } from '../hooks/useGamesData';
 import { GamesList } from '../components/GamesStore/GamesList';
 import { sliderData } from './GamesStore';
 import { PageNotFound } from './PageNotFound';
@@ -18,7 +18,7 @@ export const paginationStyle = {
   },
 };
 
-export const GamesCategory = () => {
+const GamesCategory = () => {
   window.scrollTo(0, 0);
   const [page, setPage] = useState(1);
 
@@ -57,3 +57,5 @@ export const GamesCategory = () => {
     </>
   );
 };
+
+export default GamesCategory;

@@ -1,11 +1,11 @@
 import { useRef } from 'react';
-import ReactDOM from 'react-dom';
+import { createPortal } from 'react-dom';
 import { useSelector } from 'react-redux';
 import { CSSTransition } from 'react-transition-group';
-import { gameModalActions } from '../../../store/gameModalSlice';
-import { Backdrop } from './Backdrop';
 
 import classes from './GameOverlay.module.css';
+import { gameModalActions } from '../../../store/gameModalSlice';
+import { Backdrop } from './Backdrop';
 
 const GameModal = () => {
   const nodeRef = useRef(null);
@@ -46,15 +46,15 @@ const GameModal = () => {
         </video>
         <div className={classes['game-modal__deals']}>
           <h2 className={classes['deals__header']}>
-            All Deals ({pricesList.length})
+            All Deals ({pricesList?.length})
           </h2>
-          {pricesList.length === 0 ? (
+          {pricesList?.length === 0 ? (
             <p className={classes['deals__empty-text']}>
               Sorry, no deals are available.
             </p>
           ) : (
             <ul className={classes['deals__list']}>
-              {pricesList.map((price, id) => (
+              {pricesList?.map((price, id) => (
                 <li key={id} className={classes['deals__item']}>
                   <a
                     href={price.url}
@@ -84,14 +84,11 @@ export const GameOverlay = () => {
 
   return (
     <>
-      {ReactDOM.createPortal(
+      {createPortal(
         <Backdrop resetFn={gameModalActions.reset} show={showOverlay} />,
         document.getElementById('backdrop-root')
       )}
-      {ReactDOM.createPortal(
-        <GameModal />,
-        document.getElementById('modal-root')
-      )}
+      {createPortal(<GameModal />, document.getElementById('modal-root'))}
     </>
   );
 };

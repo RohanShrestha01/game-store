@@ -1,17 +1,17 @@
-import classes from './GamesSlider.module.css';
-import { GameCard } from './GameCard';
-import { IconButton } from '@mui/material';
-import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import { useState } from 'react';
-import { useGamesData } from '../../hooks/useGamesData';
 import { Link } from 'react-router-dom';
-
+import { IconButton } from '@mui/material';
 /* SwiperJS */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
 import 'swiper/css';
 import 'swiper/css/navigation';
+
+import classes from './GamesSlider.module.css';
+import { GameCard } from './GameCard';
+import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
+import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
+import { useState } from 'react';
+import { useGamesData } from '../../hooks/useGamesData';
 
 export const GamesSlider = ({ heading, category }) => {
   const { games, gamesError } = useGamesData(category);

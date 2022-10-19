@@ -1,14 +1,13 @@
 import { Outlet } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import { Snackbar, Alert, Slide } from '@mui/material';
 
 import classes from './RootLayout.module.css';
 
 import { Header } from './Header';
 import { Sidebar } from './Sidebar';
 import { ScrollToTop } from '../utils/ScrollToTop';
-
 import { toastSliceActions } from '../store/toastSlice';
-import { Snackbar, Alert, Slide } from '@mui/material';
 
 export const RootLayout = () => {
   const toast = useSelector(state => state.toast);

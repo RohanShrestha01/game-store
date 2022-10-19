@@ -1,7 +1,8 @@
+import { useState, useRef, useEffect } from 'react';
+
 import { Carousel } from '../components/GamesStore/Carousel';
 import { GamesSlider } from '../components/GamesStore/GamesSlider';
 import { GamesList } from '../components/GamesStore/GamesList';
-import { useState, useRef, useEffect } from 'react';
 import { useGamesData } from '../hooks/useGamesData';
 import { Error } from './Error';
 

@@ -1,18 +1,16 @@
-import logo from '../assets/logo.png';
-
+import { useNavigate } from 'react-router-dom';
 import { Badge, IconButton } from '@mui/material';
 
 import classes from './Header.module.css';
 
+import logo from '../assets/logo.png';
 import { AdjustmentsSvg } from '../icons/AdjustmentsSvg';
 import { BellSvg } from '../icons/BellSvg';
 import { UsersSvg } from '../icons/UsersSvg';
-
 import { Navbar } from '../components/Navbar';
 import { Search } from '../components/Search';
 import { Profile } from '../components/Profile';
 import { StyledTooltip } from '../styles/StyledTooltip';
-import { useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const navigate = useNavigate();

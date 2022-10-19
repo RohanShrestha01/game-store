@@ -1,10 +1,10 @@
-import classes from './Cart.module.css';
+import { useSelector, useDispatch } from 'react-redux';
 import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
 import { Button, Rating } from '@mui/material';
 
-import { useSelector, useDispatch } from 'react-redux';
+import classes from './Cart.module.css';
 import { GamePrice } from '../GamePrice';
 import { cartSliceActions } from '../../../store/cartSlice';
 import { toastSliceActions } from '../../../store/toastSlice';
@@ -44,7 +44,7 @@ export const Cart = ({ setShowCart }) => {
                 <img
                   src={
                     item.bgImage.slice(0, 28) +
-                    'crop/600/400/' +
+                    'resize/420/-/' +
                     item.bgImage.slice(28)
                   }
                   alt={item.name + ' Game'}

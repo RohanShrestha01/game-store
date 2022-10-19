@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { IconButton } from '@mui/material';
+
 import classes from './Search.module.css';
 
 import { SearchSvg } from '../icons/SearchSvg';

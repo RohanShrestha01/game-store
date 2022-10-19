@@ -1,11 +1,11 @@
-import { Button, IconButton } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
 import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
 import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
-import { StyledTooltip } from '../../styles/StyledTooltip';
+import { Button, IconButton } from '@mui/material';
 
+import { StyledTooltip } from '../../styles/StyledTooltip';
 import { bookmarksSliceActions } from '../../store/bookmarksSlice';
 import { toastSliceActions } from '../../store/toastSlice';
-import { useDispatch, useSelector } from 'react-redux';
 
 export const BookmarksButton = ({ game, prices, variant, styles = {} }) => {
   const bookmarkedItems = useSelector(state => state.bookmarks.bookmarkedItems);

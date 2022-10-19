@@ -1,11 +1,12 @@
+import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
-import { GameOverlay } from '../components/GamesStore/Overlays/GameOverlay';
-import { StyledTooltip } from '../styles/StyledTooltip';
+import { useSelector } from 'react-redux';
 import { Badge, Fab, Drawer } from '@mui/material';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
-import { useState } from 'react';
+
+import { GameOverlay } from '../components/GamesStore/Overlays/GameOverlay';
+import { StyledTooltip } from '../styles/StyledTooltip';
 import { Cart } from '../components/GamesStore/Overlays/Cart';
-import { useSelector } from 'react-redux';
 
 export const GamesStoreLayout = () => {
   const [showCart, setShowCart] = useState(false);

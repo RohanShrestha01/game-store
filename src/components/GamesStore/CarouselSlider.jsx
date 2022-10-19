@@ -1,12 +1,13 @@
+import { useDispatch } from 'react-redux';
+import { Rating, Skeleton } from '@mui/material';
+
 import classes from './CarouselSlider.module.css';
 
-import { Rating, Skeleton } from '@mui/material';
 import { CircularScoreProgress } from '../../styles/CircularScoreProgress';
 import { GamePlatforms } from './GamePlatforms';
 import { GamePrice } from './GamePrice';
 import { useGamesData } from '../../hooks/useGamesData';
 import { ActionButtons } from './ActionButtons';
-import { useDispatch } from 'react-redux';
 import { gameModalActions } from '../../store/gameModalSlice';
 import { BookmarksButton } from './BookmarksButton';
 
@@ -30,7 +31,7 @@ export const CarouselSlider = ({ active, featured, prices }) => {
                 dispatch(
                   gameModalActions.showModal({
                     game,
-                    pricesList: prices[i].list,
+                    pricesList: prices?.[i].list,
                   })
                 );
             }}
@@ -40,11 +41,30 @@ export const CarouselSlider = ({ active, featured, prices }) => {
                 <CircularScoreProgress value={game.metacriticScore} />
               </div>
             )}
-            <img
-              src={game.bgImage}
-              alt={game.name + ' Game'}
-              className={classes['carousel-slider__image']}
-            />
+            <picture>
+              <source
+                srcSet={`${
+                  game.bgImage.slice(0, 28) +
+                  'resize/420/-/' +
+                  game.bgImage.slice(28)
+                } 1x, ${
+                  game.bgImage.slice(0, 28) +
+                  'crop/600/400/' +
+                  game.bgImage.slice(28)
+                } 2x`}
+                media="(max-width:37.5em)"
+                className={classes['carousel-slider__image']}
+              />
+              <img
+                src={
+                  game.bgImage.slice(0, 28) +
+                  'resize/1280/-/' +
+                  game.bgImage.slice(28)
+                }
+                alt={game.name + ' Game'}
+                className={classes['carousel-slider__image']}
+              />
+            </picture>
             <figcaption className={classes['carousel-slider__caption']}>
               <h1 className={classes['caption__header']}>{game.name}</h1>
               <Rating
@@ -70,16 +90,16 @@ export const CarouselSlider = ({ active, featured, prices }) => {
               ) : (
                 <>
                   <GamePrice
-                    prices={prices[i].list[0]}
+                    prices={prices?.[i].list[0]}
                     releaseDate={game.released}
                     variant="carousel-slider__price"
                   />
                   <ActionButtons
                     game={game}
-                    prices={prices[i].list[0]}
+                    prices={prices?.[i].list[0]}
                     variant="carousel-slider__btns"
                   />
-                  <BookmarksButton game={game} prices={prices[i].list[0]} />
+                  <BookmarksButton game={game} prices={prices?.[i].list[0]} />
                 </>
               )}
             </figcaption>
@@ -90,7 +110,7 @@ export const CarouselSlider = ({ active, featured, prices }) => {
                 <img
                   src={
                     screenshot.image.slice(0, 28) +
-                    'crop/600/400/' +
+                    'resize/420/-/' +
                     screenshot.image.slice(28)
                   }
                   alt="screenshot of game"

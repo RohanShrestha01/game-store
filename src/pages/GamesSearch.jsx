@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import { useGamesData } from '../hooks/useGamesData';
-
 import Pagination from '@mui/material/Pagination';
+
+import { useGamesData } from '../hooks/useGamesData';
 import { paginationStyle } from './GamesCategory';
 import { GamesList } from '../components/GamesStore/GamesList';
 import { Error } from './Error';
 
-export const GamesSearch = () => {
+const GamesSearch = () => {
   window.scrollTo(0, 0);
   const [page, setPage] = useState(1);
 
@@ -40,3 +40,5 @@ export const GamesSearch = () => {
     </>
   );
 };
+
+export default GamesSearch;

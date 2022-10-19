@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
@@ -8,15 +9,17 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import { theme } from './styles/theme';
+import CircularProgress from '@mui/material/CircularProgress';
 
+import { theme } from './styles/theme';
 import { RootLayout } from './layouts/RootLayout';
 import { GamesStore } from './pages/GamesStore';
 import { PageNotFound } from './pages/PageNotFound';
-import { GamesCategory } from './pages/GamesCategory';
-import { GamesSearch } from './pages/GamesSearch';
 import { GamesStoreLayout } from './layouts/GamesStoreLayout';
-import { Bookmarks } from './pages/Bookmarks';
+
+const GamesCategory = lazy(() => import('./pages/GamesCategory'));
+const GamesSearch = lazy(() => import('./pages/GamesSearch'));
+const Bookmarks = lazy(() => import('./pages/Bookmarks'));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -57,7 +60,9 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
-          <RouterProvider router={router} />
+          <Suspense fallback={<CircularProgress />}>
+            <RouterProvider router={router} />
+          </Suspense>
           <ReactQueryDevtools initialIsOpen={true} />
         </StyledEngineProvider>
       </ThemeProvider>

@@ -7,7 +7,7 @@ import { BookmarksButton } from '../components/GamesStore/BookmarksButton';
 import styles from '../components/GamesStore/GamesList.module.css';
 import classes from '../components/GamesStore/GameCard.module.css';
 
-export const Bookmarks = () => {
+const Bookmarks = () => {
   const bookmarkedGames = useSelector(state => state.bookmarks.bookmarkedItems);
   const bookmarkedGamesPrices = useSelector(
     state => state.bookmarks.bookmarkedItemsPrices
@@ -66,3 +66,5 @@ export const Bookmarks = () => {
     </section>
   );
 };
+
+export default Bookmarks;

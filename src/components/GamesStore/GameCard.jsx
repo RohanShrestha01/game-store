@@ -1,13 +1,14 @@
+import { useDispatch } from 'react-redux';
+import { Skeleton } from '@mui/material';
+import { useState } from 'react';
+
 import classes from './GameCard.module.css';
 
 import { GamePlatforms } from './GamePlatforms';
 import { GamePrice } from './GamePrice';
 import { useGamesData } from '../../hooks/useGamesData';
-import { Skeleton } from '@mui/material';
 import { ActionButtons } from './ActionButtons';
 import { gameModalActions } from '../../store/gameModalSlice';
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
 import { BookmarksButton } from './BookmarksButton';
 
 export const GameCard = ({ category, id, page, searchQuery = null }) => {
@@ -43,7 +44,7 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
         dispatch(
           gameModalActions.showModal({
             game,
-            pricesList: pricesList[id]?.list,
+            pricesList: pricesList?.[id]?.list,
           })
         )
       }
@@ -52,6 +53,7 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
         src={bgImageSrc}
         alt={game.name + ' Game'}
         className={classes.game__image}
+        loading="lazy"
       />
       <div className={classes.game__details}>
         <h3 className={classes.game__title} title={game.name}>
@@ -65,7 +67,7 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
             <div>Loading...</div>
           ) : (
             <GamePrice
-              prices={pricesList[id]?.list[0]}
+              prices={pricesList?.[id]?.list[0]}
               releaseDate={game.released}
               variant="game-card__price"
             />
@@ -79,13 +81,13 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
         <>
           <ActionButtons
             game={game}
-            prices={pricesList[id]?.list[0]}
+            prices={pricesList?.[id]?.list[0]}
             variant="game-card__btns"
           />
           <BookmarksButton
             variant="icon"
             game={game}
-            prices={pricesList[id].list[0]}
+            prices={pricesList?.[id].list[0]}
           />
         </>
       )}
