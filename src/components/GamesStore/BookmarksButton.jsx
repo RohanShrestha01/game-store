@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux';
-import AddCircleOutlineRoundedIcon from '@mui/icons-material/AddCircleOutlineRounded';
-import CheckCircleOutlineRoundedIcon from '@mui/icons-material/CheckCircleOutlineRounded';
+import {
+  AddCircleOutlineRounded,
+  CheckCircleOutlineRounded,
+} from '@mui/icons-material';
 import { Button, IconButton } from '@mui/material';
 
 import { StyledTooltip } from '../../styles/StyledTooltip';
@@ -41,8 +43,8 @@ export const BookmarksButton = ({ game, prices, variant, styles = {} }) => {
     : 'Add to Bookmarks';
 
   const Icon = presentInBookmarks
-    ? CheckCircleOutlineRoundedIcon
-    : AddCircleOutlineRoundedIcon;
+    ? CheckCircleOutlineRounded
+    : AddCircleOutlineRounded;
 
   return variant === 'icon' ? (
     <StyledTooltip title={title} placement="top">

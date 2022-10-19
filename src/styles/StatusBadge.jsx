@@ -1,5 +1,4 @@
-import { styled } from '@mui/material/styles';
-import Badge from '@mui/material/Badge';
+import { styled, Badge } from '@mui/material';
 
 export const StatusBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {

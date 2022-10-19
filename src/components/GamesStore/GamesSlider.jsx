@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { IconButton } from '@mui/material';
+import { ChevronLeftRounded, ChevronRightRounded } from '@mui/icons-material';
 /* SwiperJS */
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper';
@@ -8,9 +10,6 @@ import 'swiper/css/navigation';
 
 import classes from './GamesSlider.module.css';
 import { GameCard } from './GameCard';
-import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
-import ChevronRightRoundedIcon from '@mui/icons-material/ChevronRightRounded';
-import { useState } from 'react';
 import { useGamesData } from '../../hooks/useGamesData';
 
 export const GamesSlider = ({ heading, category }) => {
@@ -28,7 +27,7 @@ export const GamesSlider = ({ heading, category }) => {
       <div className={classes['games-slider__heading']}>
         <Link to={category} className={classes['games-slider__link']}>
           <h1 className={classes.heading}>{heading}</h1>
-          <ChevronRightRoundedIcon fontSize="medium" />
+          <ChevronRightRounded fontSize="medium" />
         </Link>
         <div>
           <IconButton
@@ -37,7 +36,7 @@ export const GamesSlider = ({ heading, category }) => {
             disabled={slideProgress === 0}
             sx={{ '&.Mui-disabled': { color: 'grey.text' } }}
           >
-            <ChevronLeftRoundedIcon fontSize="large" />
+            <ChevronLeftRounded fontSize="large" />
           </IconButton>
           <IconButton
             color="primary"
@@ -45,7 +44,7 @@ export const GamesSlider = ({ heading, category }) => {
             disabled={slideProgress === 1}
             sx={{ '&.Mui-disabled': { color: 'grey.text' } }}
           >
-            <ChevronRightRoundedIcon fontSize="large" />
+            <ChevronRightRounded fontSize="large" />
           </IconButton>
         </div>
       </div>

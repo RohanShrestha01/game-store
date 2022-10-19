@@ -8,8 +8,11 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import { ThemeProvider, StyledEngineProvider } from '@mui/material/styles';
-import CircularProgress from '@mui/material/CircularProgress';
+import {
+  ThemeProvider,
+  StyledEngineProvider,
+  CircularProgress,
+} from '@mui/material';
 
 import { theme } from './styles/theme';
 import { RootLayout } from './layouts/RootLayout';

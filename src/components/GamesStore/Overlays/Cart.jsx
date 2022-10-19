@@ -1,7 +1,9 @@
 import { useSelector, useDispatch } from 'react-redux';
-import ChevronLeftRoundedIcon from '@mui/icons-material/ChevronLeftRounded';
-import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
-import HighlightOffRoundedIcon from '@mui/icons-material/HighlightOffRounded';
+import {
+  ChevronLeftRounded,
+  ShoppingCartOutlined,
+  HighlightOffRounded,
+} from '@mui/icons-material';
 import { Button, Rating } from '@mui/material';
 
 import classes from './Cart.module.css';
@@ -24,13 +26,13 @@ export const Cart = ({ setShowCart }) => {
         onClick={() => setShowCart(false)}
         className={classes['cart__heading']}
       >
-        <ChevronLeftRoundedIcon fontSize="large" />
+        <ChevronLeftRounded fontSize="large" />
         <span className={classes['heading']}>Your Cart</span>
         <span className={classes['cart__items-num']}>({totalItems} items)</span>
       </button>
       {totalItems === 0 ? (
         <div className={classes['cart__empty']}>
-          <ShoppingCartOutlinedIcon sx={{ fontSize: '8rem' }} />
+          <ShoppingCartOutlined sx={{ fontSize: '8rem' }} />
           <h3 className={classes['cart__empty-text']}>Your cart is empty.</h3>
           <Button variant="contained" onClick={() => setShowCart(false)}>
             Continue Shopping
@@ -71,7 +73,7 @@ export const Cart = ({ setShowCart }) => {
                   />
                   <Button
                     variant="text"
-                    startIcon={<HighlightOffRoundedIcon />}
+                    startIcon={<HighlightOffRounded />}
                     sx={{
                       alignSelf: 'flex-end',
                       color: 'white',

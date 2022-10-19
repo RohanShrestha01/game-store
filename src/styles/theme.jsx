@@ -1,5 +1,4 @@
-import { createTheme } from '@mui/material/styles';
-import Zoom from '@mui/material/Zoom';
+import { createTheme, Zoom } from '@mui/material';
 
 export const theme = createTheme({
   palette: {
