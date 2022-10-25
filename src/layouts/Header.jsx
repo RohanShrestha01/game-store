@@ -4,9 +4,7 @@ import { Badge, IconButton } from '@mui/material';
 import classes from './Header.module.css';
 
 import logo from '../assets/logo.png';
-import { AdjustmentsSvg } from '../icons/AdjustmentsSvg';
-import { BellSvg } from '../icons/BellSvg';
-import { UsersSvg } from '../icons/UsersSvg';
+import { AdjustmentsSvg, BellSvg, UsersSvg } from '../icons/AllSvgs';
 import { Navbar } from '../components/Navbar';
 import { Search } from '../components/Search';
 import { Profile } from '../components/Profile';

@@ -41,6 +41,7 @@ export const RootLayout = () => {
           severity={toast.active?.type}
           variant="filled"
           color={toast.active?.type === 'success' ? 'success' : 'error'}
+          sx={{ '& .MuiAlert-message': { fontSize: '1.2rem' } }}
         >
           {toast.active?.message}
         </Alert>

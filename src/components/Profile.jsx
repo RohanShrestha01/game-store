@@ -2,7 +2,7 @@ import { Avatar } from '@mui/material';
 
 import user from '../assets/user.png';
 import classes from './Profile.module.css';
-import { AngleDownSvg } from '../icons/AngleDownSvg';
+import { AngleDownSvg } from '../icons/AllSvgs';
 import { StatusBadge } from '../styles/StatusBadge';
 
 export const Profile = () => {

@@ -1,6 +1,8 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
+const bookmarks = JSON.parse(localStorage.getItem('bookmarks'));
+
+const initialState = bookmarks ?? {
   bookmarkedItems: [],
   bookmarkedItemsPrices: [],
 };
@@ -12,6 +14,7 @@ const bookmarksSlice = createSlice({
     add: (state, action) => {
       state.bookmarkedItems.push(action.payload.game);
       state.bookmarkedItemsPrices.push(action.payload.pricesList);
+      localStorage.setItem('bookmarks', JSON.stringify(state));
     },
     remove: (state, action) => {
       const num = state.bookmarkedItems.findIndex(
@@ -19,6 +22,7 @@ const bookmarksSlice = createSlice({
       );
       state.bookmarkedItems.splice(num, 1);
       state.bookmarkedItemsPrices.splice(num, 1);
+      localStorage.setItem('bookmarks', JSON.stringify(state));
     },
   },
 });

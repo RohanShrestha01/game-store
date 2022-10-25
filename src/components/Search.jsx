@@ -3,8 +3,7 @@ import { IconButton } from '@mui/material';
 
 import classes from './Search.module.css';
 
-import { SearchSvg } from '../icons/SearchSvg';
-import { CrossSvg } from '../icons/CrossSvg';
+import { SearchSvg, CrossSvg } from '../icons/AllSvgs';
 
 export const Search = () => {
   const [crossShow, setCrossShow] = useState(false);

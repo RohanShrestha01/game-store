@@ -3,13 +3,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { Tabs, Tab } from '@mui/material';
 
 import { StyledTooltip } from '../styles/StyledTooltip';
-import { BookmarkSvg } from '../icons/BookmarkSvg';
-import { GamepadSvg } from '../icons/GamepadSvg';
-import { HomeSvg } from '../icons/HomeSvg';
-import { MovieSvg } from '../icons/MovieSvg';
-import { MusicSvg } from '../icons/MusicSvg';
-import { SettingsSvg } from '../icons/SettingsSvg';
-import { StoreSvg } from '../icons/StoreSvg';
+import {
+  BookmarkSvg,
+  GamepadSvg,
+  HomeSvg,
+  MovieSvg,
+  MusicSvg,
+  SettingsSvg,
+  StoreSvg,
+} from '../icons/AllSvgs';
 
 import classes from './Sidebar.module.css';
 

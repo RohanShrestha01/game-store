@@ -1,9 +1,11 @@
-import { WindowsSvg } from '../../icons/WindowsSvg';
-import { AppleSvg } from '../../icons/AppleSvg';
-import { LinuxSvg } from '../../icons/LinuxSvg';
-import { PlaystationSvg } from '../../icons/PlaystationSvg';
-import { XboxSvg } from '../../icons/XboxSvg';
-import { NintendoSvg } from '../../icons/NintendoSvg';
+import {
+  AppleSvg,
+  WindowsSvg,
+  LinuxSvg,
+  PlaystationSvg,
+  XboxSvg,
+  NintendoSvg,
+} from '../../icons/AllSvgs';
 
 export const GamePlatforms = ({ platforms }) =>
   platforms?.map(({ platform: { slug } }, i) =>
