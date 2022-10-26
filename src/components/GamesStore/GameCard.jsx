@@ -29,8 +29,9 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
   if (gamesError) return;
 
   const game = games[id];
-  const bgImageSrc =
-    game?.bgImage?.slice(0, 28) + 'crop/600/400/' + game?.bgImage?.slice(28);
+  const bgImageSrc = game.bgImage
+    ? game.bgImage?.slice(0, 28) + 'crop/600/400/' + game?.bgImage.slice(28)
+    : 'https://dummyimage.com/600x400/000000/f5f5f5.png&text=Image+Not+Found';
 
   const genres = game.genres.map(genre => genre.name).join(', ');
 
