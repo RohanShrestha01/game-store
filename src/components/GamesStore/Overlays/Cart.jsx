@@ -20,6 +20,28 @@ export const Cart = ({ setShowCart }) => {
 
   const dispatch = useDispatch();
 
+  const gamesWithPrice = cartItems.map((item, i) => ({
+    name: item.name,
+    price: cartItemsPrices[i].price_new,
+  }));
+
+  const payClickHandler = async () => {
+    const res = await fetch(
+      'https://alert-viper.cyclic.app/create-checkout-session',
+      {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(gamesWithPrice),
+      }
+    );
+    if (!res.ok) {
+      console.error('Something went wrong!');
+      return;
+    }
+    const { url } = await res.json();
+    window.location = url;
+  };
+
   return (
     <div className={classes['cart-container']}>
       <button
@@ -107,7 +129,11 @@ export const Cart = ({ setShowCart }) => {
                 {'$' + totalPrice.toFixed(2)}
               </span>
             </div>
-            <Button variant="contained" className={classes['payment__btn']}>
+            <Button
+              variant="contained"
+              className={classes['payment__btn']}
+              onClick={payClickHandler}
+            >
               Pay with Stripe
             </Button>
           </div>

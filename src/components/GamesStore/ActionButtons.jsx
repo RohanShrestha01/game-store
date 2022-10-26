@@ -20,6 +20,26 @@ export const ActionButtons = ({ game, prices, variant }) => {
   const cartItems = useSelector(state => state.cart.cartItems);
   const presentInCart = cartItems.find(item => item.id === game.id);
 
+  const buyClickHandler = async e => {
+    e.stopPropagation();
+    if (!isFree && newPrice) {
+      const res = await fetch(
+        'https://alert-viper.cyclic.app/create-checkout-session',
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify([{ name: game.name, price: newPrice }]),
+        }
+      );
+      if (!res.ok) {
+        console.error('Something went wrong!');
+        return;
+      }
+      const { url } = await res.json();
+      window.location = url;
+    }
+  };
+
   const cartBtnClickHandler = e => {
     e.stopPropagation();
     if (presentInCart) {
@@ -41,9 +61,7 @@ export const ActionButtons = ({ game, prices, variant }) => {
         variant="contained"
         href={isFree ? prices?.url : ''}
         target="_blank"
-        onClick={e => {
-          e.stopPropagation();
-        }}
+        onClick={buyClickHandler}
         className={classes['action-btn']}
         size={variant === 'carousel-slider__btns' ? 'large' : 'medium'}
         startIcon={
