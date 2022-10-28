@@ -22,6 +22,29 @@ export const GamesSlider = ({ heading, category }) => {
 
   if (gamesError) return;
 
+  const breakpoints = {
+    0: {
+      slidesPerView: 2,
+      slidesPerGroup: 2,
+      spaceBetween: 15,
+    },
+    600: {
+      slidesPerView: 3,
+      slidesPerGroup: 3,
+      spaceBetween: 15,
+    },
+    850: {
+      slidesPerView: 4,
+      slidesPerGroup: 4,
+      spaceBetween: 20,
+    },
+    1250: {
+      slidesPerView: 5,
+      slidesPerGroup: 5,
+      spaceBetween: 30,
+    },
+  };
+
   return (
     <section className={classes['games-slider']}>
       <div className={classes['games-slider__heading']}>
@@ -50,9 +73,7 @@ export const GamesSlider = ({ heading, category }) => {
       </div>
       <Swiper
         className={classes['game-cards']}
-        slidesPerView={5}
-        slidesPerGroup={5}
-        spaceBetween={30}
+        breakpoints={breakpoints}
         simulateTouch={false}
         modules={[Navigation]}
         navigation={{ prevEl, nextEl }}

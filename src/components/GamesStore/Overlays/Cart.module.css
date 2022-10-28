@@ -88,3 +88,9 @@
   width: 50%;
   font-size: 1.4rem;
 }
+
+@media screen and (max-width: 480px) {
+  .item__image {
+    display: none;
+  }
+}

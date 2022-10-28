@@ -14,10 +14,23 @@
   fill: var(--color-white);
 }
 
-.side-nav__link:hover .side-nav__icon {
-  fill: var(--color-primary-main);
+@media (hover: hover) and (pointer: fine) {
+  .side-nav__link:hover .side-nav__icon {
+    fill: var(--color-primary-main);
+  }
 }
 
 .side-nav__link--active .side-nav__icon {
   fill: var(--color-primary-main);
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar {
+    height: 7.5rem;
+    width: 100vw;
+    top: initial;
+    bottom: 0;
+    z-index: 10;
+    padding: 0;
+  }
 }

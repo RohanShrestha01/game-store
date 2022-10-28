@@ -99,3 +99,26 @@
   border-radius: 0.3rem;
   object-fit: cover;
 }
+
+@media screen and (max-width: 1200px) {
+  .carousel-slider__caption {
+    width: 80%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .carousel-slider {
+    height: 60vh;
+  }
+
+  .carousel-slider__score {
+    top: 2rem;
+    left: 2rem;
+  }
+
+  .carousel-slider__caption {
+    left: 2rem;
+    bottom: 2rem;
+    width: 90%;
+  }
+}

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   ChevronLeftRounded,
@@ -15,10 +16,11 @@ import { BookmarksButton } from '../BookmarksButton';
 export const Cart = ({ setShowCart }) => {
   const cartItems = useSelector(state => state.cart.cartItems);
   const cartItemsPrices = useSelector(state => state.cart.cartItemsPrices);
-  const totalPrice = useSelector(state => state.cart.totalPrice);
+  const totalPriceInCents = useSelector(state => state.cart.totalPriceInCents);
   const totalItems = cartItems.length;
 
   const dispatch = useDispatch();
+  const [stripeLoading, setStripeLoading] = useState(false);
 
   const gamesWithPrice = cartItems.map((item, i) => ({
     name: item.name,
@@ -26,6 +28,7 @@ export const Cart = ({ setShowCart }) => {
   }));
 
   const payClickHandler = async () => {
+    setStripeLoading(true);
     const res = await fetch(
       'https://alert-viper.cyclic.app/create-checkout-session',
       {
@@ -126,15 +129,16 @@ export const Cart = ({ setShowCart }) => {
                 Total Price:{' '}
               </span>
               <span className={classes['payment__total-price']}>
-                {'$' + totalPrice.toFixed(2)}
+                {'$' + totalPriceInCents / 100}
               </span>
             </div>
             <Button
               variant="contained"
               className={classes['payment__btn']}
               onClick={payClickHandler}
+              disabled={stripeLoading}
             >
-              Pay with Stripe
+              {stripeLoading ? 'Loading...' : 'Pay with Stripe'}
             </Button>
           </div>
         </>

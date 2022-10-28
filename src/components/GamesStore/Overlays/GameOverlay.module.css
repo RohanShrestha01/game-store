@@ -62,7 +62,7 @@
 
 .deals__list {
   border-radius: 0.3rem;
-  height: 25vw;
+  height: 28vw;
   overflow: auto;
 }
 
@@ -81,4 +81,27 @@
 
 .deals__link:hover {
   color: var(--color-primary-main);
+}
+
+@media screen and (max-width: 800px) {
+  .game-modal {
+    flex-direction: column;
+    width: 75vw;
+  }
+
+  .game-modal__video {
+    width: 100%;
+  }
+
+  .game-modal__deals {
+    height: 30rem;
+  }
+
+  .deals__item {
+    margin-bottom: 1rem;
+  }
+
+  .deals__list {
+    height: 22rem;
+  }
 }

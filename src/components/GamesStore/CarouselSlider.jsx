@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { Rating, Skeleton } from '@mui/material';
+import { Rating, Skeleton, useMediaQuery } from '@mui/material';
 
 import classes from './CarouselSlider.module.css';
 
@@ -14,6 +14,8 @@ import { BookmarksButton } from './BookmarksButton';
 export const CarouselSlider = ({ active, featured, prices }) => {
   const { gamesIsLoading, pricesIsLoading } = useGamesData('featured');
   const dispatch = useDispatch();
+
+  const matches = useMediaQuery('(max-width: 1200px)');
 
   return (
     <div className={classes['carousel-slider']}>
@@ -103,22 +105,24 @@ export const CarouselSlider = ({ active, featured, prices }) => {
                 </>
               )}
             </figcaption>
-            <div className={classes['screenshots']}>
-              <span className={classes['scenes-text']}>Scenes</span>
-              <div className={classes['clip-btn']}></div>
-              {game.screenshots.slice(1, 6).map(screenshot => (
-                <img
-                  src={
-                    screenshot.image.slice(0, 28) +
-                    'resize/420/-/' +
-                    screenshot.image.slice(28)
-                  }
-                  alt="screenshot of game"
-                  className={classes['screenshots__img']}
-                  key={screenshot.id}
-                />
-              ))}
-            </div>
+            {!matches && (
+              <div className={classes['screenshots']}>
+                <span className={classes['scenes-text']}>Scenes</span>
+                <div className={classes['clip-btn']}></div>
+                {game.screenshots.slice(1, 6).map(screenshot => (
+                  <img
+                    src={
+                      screenshot.image.slice(0, 28) +
+                      'resize/420/-/' +
+                      screenshot.image.slice(28)
+                    }
+                    alt="screenshot of game"
+                    className={classes['screenshots__img']}
+                    key={screenshot.id}
+                  />
+                ))}
+              </div>
+            )}
           </figure>
         ))
       )}

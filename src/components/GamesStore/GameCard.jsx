@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { Skeleton } from '@mui/material';
+import { Skeleton, useMediaQuery } from '@mui/material';
 import { useState } from 'react';
 
 import classes from './GameCard.module.css';
@@ -16,6 +16,7 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
   const { games, gamesIsLoading, gamesError, pricesList, pricesIsLoading } =
     useGamesData(category, page, searchQuery);
   const dispatch = useDispatch();
+  const touchScreenMatches = useMediaQuery('(hover: none) and (pointer:none)');
 
   if (gamesIsLoading)
     return (
@@ -78,7 +79,7 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
           </span>
         </div>
       </div>
-      {!pricesIsLoading && showBtns && (
+      {!pricesIsLoading && (showBtns || touchScreenMatches) && (
         <>
           <ActionButtons
             game={game}
@@ -88,7 +89,7 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
           <BookmarksButton
             variant="icon"
             game={game}
-            prices={pricesList?.[id].list[0]}
+            prices={pricesList?.[id]?.list[0]}
           />
         </>
       )}

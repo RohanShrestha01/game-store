@@ -43,3 +43,13 @@
   width: 2.1rem;
   fill: var(--color-grey-text);
 }
+
+@media screen and (max-width: 600px) {
+  .search {
+    flex-basis: 10rem;
+  }
+
+  .search__input {
+    padding-right: 1rem;
+  }
+}

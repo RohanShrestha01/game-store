@@ -25,3 +25,9 @@
   border-radius: 0 0 0.3rem 0.3rem;
   width: 100%;
 }
+
+@media (hover: none) and (pointer: none) {
+  .game-card__btns {
+    position: static;
+  }
+}

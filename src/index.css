@@ -70,3 +70,15 @@ button {
   border-width: 0;
   line-height: 0px;
 }
+
+@media screen and (max-width: 1300px) {
+  html {
+    font-size: 56.25%;
+  }
+}
+
+@media screen and (max-width: 950px) {
+  html {
+    font-size: 50%;
+  }
+}

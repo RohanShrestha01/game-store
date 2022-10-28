@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
+import { useMediaQuery } from '@mui/material';
 
 import { useGamesData } from '../hooks/useGamesData';
 import { GamesList } from '../components/GamesStore/GamesList';
@@ -23,6 +24,9 @@ const GamesCategory = () => {
   const [page, setPage] = useState(1);
 
   const category = useParams().category;
+
+  const matches = useMediaQuery('(max-width: 600px)');
+  const paginationMarginBottom = matches ? { marginBottom: '10rem' } : {};
 
   let heading;
   let categoryMatch = false;
@@ -50,7 +54,7 @@ const GamesCategory = () => {
         color="primary"
         size="large"
         shape="rounded"
-        sx={paginationStyle}
+        sx={{ ...paginationStyle, ...paginationMarginBottom }}
         page={page}
         onChange={(_event, value) => setPage(value)}
       />

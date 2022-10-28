@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Button from '@mui/material/Button';
+import { useMediaQuery } from '@mui/material';
 import {
   FileDownloadOutlined,
   AddShoppingCartRounded,
@@ -20,9 +22,13 @@ export const ActionButtons = ({ game, prices, variant }) => {
   const cartItems = useSelector(state => state.cart.cartItems);
   const presentInCart = cartItems.find(item => item.id === game.id);
 
+  const matches = useMediaQuery('(max-width: 600px)');
+  const [stripeLoading, setStripeLoading] = useState(false);
+
   const buyClickHandler = async e => {
     e.stopPropagation();
     if (!isFree && newPrice) {
+      setStripeLoading(true);
       const res = await fetch(
         'https://alert-viper.cyclic.app/create-checkout-session',
         {
@@ -55,6 +61,8 @@ export const ActionButtons = ({ game, prices, variant }) => {
     ? RemoveShoppingCartOutlined
     : AddShoppingCartRounded;
 
+  const btnSize = variant === 'game-card__btns' || matches ? 'medium' : 'large';
+
   return (
     <div className={classes[variant]}>
       <Button
@@ -62,8 +70,9 @@ export const ActionButtons = ({ game, prices, variant }) => {
         href={isFree ? prices?.url : ''}
         target="_blank"
         onClick={buyClickHandler}
+        disabled={stripeLoading}
         className={classes['action-btn']}
-        size={variant === 'carousel-slider__btns' ? 'large' : 'medium'}
+        size={btnSize}
         startIcon={
           isFree ? (
             <FileDownloadOutlined />
@@ -74,12 +83,18 @@ export const ActionButtons = ({ game, prices, variant }) => {
           )
         }
       >
-        {isFree ? 'Download' : newPrice ? 'Buy Now' : 'Notify Me'}
+        {isFree
+          ? 'Download'
+          : stripeLoading
+          ? 'Loading...'
+          : newPrice
+          ? 'Buy Now'
+          : 'Notify Me'}
       </Button>
       {newPrice && (
         <Button
           variant="contained"
-          size={variant === 'carousel-slider__btns' ? 'large' : 'medium'}
+          size={btnSize}
           className={classes['cart-btn']}
           onClick={cartBtnClickHandler}
           color={presentInCart ? 'error' : 'primary'}

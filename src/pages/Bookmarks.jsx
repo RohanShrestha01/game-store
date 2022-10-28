@@ -14,7 +14,7 @@ const Bookmarks = () => {
   );
 
   return (
-    <section>
+    <section style={{ marginBottom: '10rem' }}>
       <h1 className={styles.header}>Bookmarks</h1>
       {bookmarkedGames.length === 0 ? (
         <p style={{ marginTop: '1.2rem' }}>

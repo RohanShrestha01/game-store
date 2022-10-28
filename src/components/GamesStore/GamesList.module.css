@@ -6,7 +6,19 @@
 
 .game-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(22rem, 1fr));
   gap: 3rem;
   margin-top: 3rem;
+}
+
+@media screen and (max-width: 1250px) {
+  .game-cards {
+    gap: 2rem;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .game-cards {
+    gap: 1.5rem;
+  }
 }

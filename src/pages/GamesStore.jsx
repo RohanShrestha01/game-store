@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
+import { useMediaQuery } from '@mui/material';
 
 import { Carousel } from '../components/GamesStore/Carousel';
 import { GamesSlider } from '../components/GamesStore/GamesSlider';
@@ -18,10 +19,13 @@ export const GamesStore = () => {
   const loader = useRef(null);
   const { gamesError } = useGamesData('all');
 
+  const matches = useMediaQuery('(max-width: 600px)');
+
   useEffect(() => {
+    const rootMargin = matches ? '1000px' : '200px';
     const obsOptions = {
       root: null,
-      rootMargin: '200px',
+      rootMargin: rootMargin,
       threshold: 0,
     };
 
@@ -30,7 +34,7 @@ export const GamesStore = () => {
     }, obsOptions);
 
     if (loader.current) observer.observe(loader.current);
-  }, []);
+  }, [matches]);
 
   if (gamesError) return <Error error={gamesError} />;
 

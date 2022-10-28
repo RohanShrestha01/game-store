@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useMediaQuery } from '@mui/material';
 
 import classes from './Carousel.module.css';
 import { CarouselSlider } from './CarouselSlider';
@@ -22,6 +23,7 @@ export const Carousel = () => {
   const prices = pricesList && randNums.map(num => pricesList[num]);
 
   const [active, setActive] = useState(activeCarousel);
+  const matches = useMediaQuery('(max-width: 600px)');
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -42,11 +44,13 @@ export const Carousel = () => {
   return (
     <section className={classes.carousel}>
       <CarouselSlider active={active} featured={featured} prices={prices} />
-      <CarouselProgress
-        active={active}
-        clickHandler={carouselItemClickHandler}
-        featured={featured}
-      />
+      {!matches && (
+        <CarouselProgress
+          active={active}
+          clickHandler={carouselItemClickHandler}
+          featured={featured}
+        />
+      )}
     </section>
   );
 };

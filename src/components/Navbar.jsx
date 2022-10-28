@@ -1,8 +1,10 @@
+import { useMediaQuery } from '@mui/material';
 import classes from './Navbar.module.css';
 import { NavItem } from './NavItem';
 
 export const Navbar = () => {
-  const titles = ['Games', 'Movies', 'Music', 'Apps'];
+  const matches = useMediaQuery('(max-width: 450px)');
+  const titles = matches ? ['Games'] : ['Games', 'Movies', 'Music', 'Apps'];
 
   return (
     <nav className={classes['nav']}>

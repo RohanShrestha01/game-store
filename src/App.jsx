@@ -8,11 +8,7 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
-import {
-  ThemeProvider,
-  StyledEngineProvider,
-  CircularProgress,
-} from '@mui/material';
+import { ThemeProvider, StyledEngineProvider } from '@mui/material';
 
 import { theme } from './styles/theme';
 import { RootLayout } from './layouts/RootLayout';
@@ -41,8 +37,22 @@ const router = createBrowserRouter(
       <Route path="store" element={<Navigate to="games" replace />} />
       <Route path="store/games" element={<GamesStoreLayout />}>
         <Route index element={<GamesStore />} />
-        <Route path=":category" element={<GamesCategory />} />
-        <Route path="search" element={<GamesSearch />} />
+        <Route
+          path=":category"
+          element={
+            <Suspense fallback={<h2>Loading...</h2>}>
+              <GamesCategory />
+            </Suspense>
+          }
+        />
+        <Route
+          path="search"
+          element={
+            <Suspense fallback={<h2>Loading...</h2>}>
+              <GamesSearch />
+            </Suspense>
+          }
+        />
       </Route>
       <Route path="store/movies" element={<h1>Movies Store</h1>} />
       <Route path="store/music" element={<h1>Music Store</h1>} />
@@ -51,7 +61,14 @@ const router = createBrowserRouter(
       <Route path="games" element={<h1>Games</h1>} />
       <Route path="movies" element={<h1>Movies</h1>} />
       <Route path="music" element={<h1>Music</h1>} />
-      <Route path="bookmarks" element={<Bookmarks />} />
+      <Route
+        path="bookmarks"
+        element={
+          <Suspense fallback={<h2>Loading...</h2>}>
+            <Bookmarks />
+          </Suspense>
+        }
+      />
       <Route path="settings" element={<h1>Settings</h1>} />
       <Route path="*" element={<PageNotFound />} />
     </Route>
@@ -63,9 +80,7 @@ const App = () => {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider theme={theme}>
         <StyledEngineProvider injectFirst>
-          <Suspense fallback={<CircularProgress />}>
-            <RouterProvider router={router} />
-          </Suspense>
+          <RouterProvider router={router} />
           <ReactQueryDevtools initialIsOpen={true} />
         </StyledEngineProvider>
       </ThemeProvider>

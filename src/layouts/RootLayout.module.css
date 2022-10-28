@@ -1,6 +1,19 @@
 .main-content {
   margin: 8rem auto;
   margin-bottom: 3rem;
-  width: 87%;
+  padding-left: 5.5rem;
+  width: 92%;
   max-width: 160rem;
+}
+
+@media screen and (max-width: 1250px) {
+  .main-content {
+    width: 94%;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .main-content {
+    padding: 0;
+  }
 }

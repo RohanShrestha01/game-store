@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import Pagination from '@mui/material/Pagination';
+import { useMediaQuery } from '@mui/material';
 
 import { useGamesData } from '../hooks/useGamesData';
 import { paginationStyle } from './GamesCategory';
@@ -18,6 +19,9 @@ const GamesSearch = () => {
   const { gamesError, gamesCount } = useGamesData('search', page, searchQuery);
   const pageCount = Math.ceil(gamesCount / 40);
 
+  const matches = useMediaQuery('(max-width: 600px)');
+  const paginationMarginBottom = matches ? { marginBottom: '10rem' } : {};
+
   if (gamesError) return <Error error={gamesError} />;
 
   return (
@@ -33,7 +37,7 @@ const GamesSearch = () => {
         color="primary"
         size="large"
         shape="rounded"
-        sx={paginationStyle}
+        sx={{ ...paginationStyle, ...paginationMarginBottom }}
         page={page}
         onChange={(_event, value) => setPage(value)}
       />

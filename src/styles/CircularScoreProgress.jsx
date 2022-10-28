@@ -11,11 +11,13 @@ export const CircularScoreProgress = props => (
     <CircularProgress
       variant="determinate"
       value={100}
+      size="4rem"
       sx={{ position: 'absolute', color: 'grey.text' }}
     />
     <CircularProgress
       variant="determinate"
       sx={{ position: 'absolute', color: '#64dd17' }}
+      size="4rem"
       {...props}
     />
     <span
