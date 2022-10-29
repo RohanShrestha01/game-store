@@ -16,7 +16,9 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
   const { games, gamesIsLoading, gamesError, pricesList, pricesIsLoading } =
     useGamesData(category, page, searchQuery);
   const dispatch = useDispatch();
-  const touchScreenMatches = useMediaQuery('(hover: none) and (pointer:none)');
+  const touchScreenMatches = !useMediaQuery(
+    '(hover: hover) and (pointer: fine)'
+  );
 
   if (gamesIsLoading)
     return (

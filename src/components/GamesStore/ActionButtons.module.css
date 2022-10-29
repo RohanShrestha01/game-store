@@ -18,7 +18,7 @@
   gap: 0.8rem;
   padding: 1.2rem;
   padding-top: 0;
-  position: absolute;
+  position: static;
   top: 100%;
   background-color: var(--color-black-light);
   z-index: 5;
@@ -26,8 +26,8 @@
   width: 100%;
 }
 
-@media (hover: none) and (pointer: none) {
+@media (hover: hover) and (pointer: fine) {
   .game-card__btns {
-    position: static;
+    position: absolute;
   }
 }
