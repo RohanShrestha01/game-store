@@ -44,9 +44,7 @@ export const useGamesData = (category, page = 1, searchQuery = null) => {
     error: gamesError,
   } = useQuery(['games', category, page], () =>
     fetch(
-      `${
-        import.meta.env.VITE_BACKEND_URL
-      }/games/${category}?page=${page}&search=${searchQuery}`
+      `https://alert-viper.cyclic.app/games/${category}?page=${page}&search=${searchQuery}`
     ).then(res => res.json())
   );
 
@@ -62,7 +60,7 @@ export const useGamesData = (category, page = 1, searchQuery = null) => {
   } = useQuery(
     ['prices', category, page],
     () =>
-      fetch(`${import.meta.env.VITE_BACKEND_URL}/prices?plains=${plains}`).then(
+      fetch(`https://alert-viper.cyclic.app/prices?plains=${plains}`).then(
         res => res.json()
       ),
     {
