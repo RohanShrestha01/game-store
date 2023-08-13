@@ -1,6 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Skeleton, useMediaQuery } from '@mui/material';
 import { useState } from 'react';
+import { Image } from 'react-shimmer';
 
 import classes from './GameCard.module.css';
 
@@ -53,11 +54,14 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
         )
       }
     >
-      <img
+      <Image
         src={bgImageSrc}
-        alt={game.name + ' Game'}
-        className={classes.game__image}
-        loading="lazy"
+        fallback={<Skeleton variant="rounded" className={classes.game__image} height={150} />}
+        fadeIn={true}
+        NativeImgProps={{
+          alt: game.name + ' Game',
+          className: classes.game__image
+        }}
       />
       <div className={classes.game__details}>
         <h3 className={classes.game__title} title={game.name}>
