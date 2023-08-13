@@ -47,7 +47,13 @@ export const GamesStore = () => {
       {[...Array(page)].map((_, i) => (
         <GamesList heading="All Games" category="all" page={i + 1} key={i} />
       ))}
-      <div ref={loader}></div>
+      {page <= 12 ? (
+        <div ref={loader}></div>
+      ) : (
+        <p style={{ textAlign: 'center', marginTop: '2.5rem' }}>
+          Nothing more to load.
+        </p>
+      )}
     </>
   );
 };

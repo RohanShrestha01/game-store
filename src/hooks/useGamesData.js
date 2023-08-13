@@ -44,7 +44,9 @@ export const useGamesData = (category, page = 1, searchQuery = null) => {
     error: gamesError,
   } = useQuery(['games', category, page], () =>
     fetch(
-      `${import.meta.env.VITE_BACKEND_URL}/games/${category}?page=${page}&search=${searchQuery}`
+      `${
+        import.meta.env.VITE_BACKEND_URL
+      }/games/${category}?page=${page}&search=${searchQuery}`
     ).then(res => res.json())
   );
 

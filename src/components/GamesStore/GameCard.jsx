@@ -56,11 +56,17 @@ export const GameCard = ({ category, id, page, searchQuery = null }) => {
     >
       <Image
         src={bgImageSrc}
-        fallback={<Skeleton variant="rounded" className={classes.game__image} height={150} />}
+        fallback={
+          <Skeleton
+            variant="rounded"
+            className={classes.game__image}
+            height={150}
+          />
+        }
         fadeIn={true}
         NativeImgProps={{
           alt: game.name + ' Game',
-          className: classes.game__image
+          className: classes.game__image,
         }}
       />
       <div className={classes.game__details}>
