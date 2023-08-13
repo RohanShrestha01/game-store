@@ -23,9 +23,11 @@ const Bookmarks = lazy(() => import('./pages/Bookmarks'));
 const queryClient = new QueryClient({
   defaultOptions: {
     queries: {
+      retry: 1,
       staleTime: Infinity,
       networkMode: 'always',
       refetchOnReconnect: true,
+      refetchOnWindowFocus: false,
     },
   },
 });

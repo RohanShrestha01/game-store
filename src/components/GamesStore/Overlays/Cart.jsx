@@ -30,7 +30,7 @@ export const Cart = ({ setShowCart }) => {
   const payClickHandler = async () => {
     setStripeLoading(true);
     const res = await fetch(
-      'https://alert-viper.cyclic.app/create-checkout-session',
+      `${import.meta.env.VITE_BACKEND_URL}/create-checkout-session`,
       {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
