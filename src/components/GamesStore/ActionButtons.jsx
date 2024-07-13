@@ -13,6 +13,7 @@ import {
 import classes from './ActionButtons.module.css';
 import { cartSliceActions } from '../../store/cartSlice';
 import { toastSliceActions } from '../../store/toastSlice';
+import { API_BASE_URL } from '../../utils/constants';
 
 export const ActionButtons = ({ game, prices, variant }) => {
   const newPrice = prices?.price_new.toFixed(2);
@@ -29,14 +30,11 @@ export const ActionButtons = ({ game, prices, variant }) => {
     e.stopPropagation();
     if (!isFree && newPrice) {
       setStripeLoading(true);
-      const res = await fetch(
-        'https://alert-viper.cyclic.app/create-checkout-session',
-        {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify([{ name: game.name, price: newPrice }]),
-        }
-      );
+      const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify([{ name: game.name, price: newPrice }]),
+      });
       if (!res.ok) {
         console.error('Something went wrong!');
         return;

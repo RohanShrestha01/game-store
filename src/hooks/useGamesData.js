@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import { API_BASE_URL } from '../utils/constants';
 
 const getPlains = games => {
   const chars = {
@@ -44,7 +45,7 @@ export const useGamesData = (category, page = 1, searchQuery = null) => {
     error: gamesError,
   } = useQuery(['games', category, page], () =>
     fetch(
-      `https://alert-viper.cyclic.app/games/${category}?page=${page}&search=${searchQuery}`
+      `${API_BASE_URL}/games/${category}?page=${page}&search=${searchQuery}`
     ).then(res => res.json())
   );
 
@@ -60,9 +61,7 @@ export const useGamesData = (category, page = 1, searchQuery = null) => {
   } = useQuery(
     ['prices', category, page],
     () =>
-      fetch(`https://alert-viper.cyclic.app/prices?plains=${plains}`).then(
-        res => res.json()
-      ),
+      fetch(`${API_BASE_URL}/prices?plains=${plains}`).then(res => res.json()),
     {
       enabled: !!games && games.length !== 0,
     }

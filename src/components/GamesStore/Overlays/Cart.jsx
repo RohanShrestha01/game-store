@@ -12,6 +12,7 @@ import { GamePrice } from '../GamePrice';
 import { cartSliceActions } from '../../../store/cartSlice';
 import { toastSliceActions } from '../../../store/toastSlice';
 import { BookmarksButton } from '../BookmarksButton';
+import { API_BASE_URL } from '../../../utils/constants';
 
 export const Cart = ({ setShowCart }) => {
   const cartItems = useSelector(state => state.cart.cartItems);
@@ -29,14 +30,11 @@ export const Cart = ({ setShowCart }) => {
 
   const payClickHandler = async () => {
     setStripeLoading(true);
-    const res = await fetch(
-      'https://alert-viper.cyclic.app/create-checkout-session',
-      {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(gamesWithPrice),
-      }
-    );
+    const res = await fetch(`${API_BASE_URL}/create-checkout-session`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(gamesWithPrice),
+    });
     if (!res.ok) {
       console.error('Something went wrong!');
       return;
