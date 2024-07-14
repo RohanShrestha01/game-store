@@ -9,12 +9,12 @@ import { Error } from '../../pages/Error';
 
 let activeCarousel = 0;
 
-// array of 6 random numbers between 0 and 40 (0 included) for featured carousel
+// array of 6 random numbers between 0 and 39 (0 included) for featured carousel
 const randNums = [...Array(6)].map(
   function () {
     return this.splice(Math.floor(Math.random() * this.length), 1)[0];
   },
-  [...Array(40).keys()]
+  [...Array(39).keys()]
 );
 
 export const Carousel = () => {
